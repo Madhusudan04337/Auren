@@ -3,6 +3,7 @@ import { Product } from '../../types';
 import { PRODUCTS } from '../../data/products';
 import { Sparkles, ArrowRight, Check } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
+import { LuxuryImage } from '../ui/LuxuryImage';
 
 interface SkinConcernFinderProps {
   onSelectProduct: (product: Product) => void;
@@ -41,18 +42,18 @@ export const SkinConcernFinder: React.FC<SkinConcernFinderProps> = ({
   };
 
   return (
-    <section className="bg-[#FAF8F5] py-16 sm:py-20 border-b border-[#E5DFD5]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+    <section className="bg-[#F4F1E8] py-16 sm:py-20 border-b border-[#D8D7CC]">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 space-y-10">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <span className="text-xs uppercase tracking-[0.25em] text-[#543544] font-semibold flex items-center justify-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-[#CDAA7D]" />
+          <span className="text-xs uppercase tracking-[0.25em] text-[#2D3A1F] font-semibold flex items-center justify-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5 text-[#B8A678]" />
             Personalized Diagnostic
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#181818] font-normal">
+          <h2 className="font-serif text-3xl sm:text-4xl text-[#2D3A1F] font-normal">
             What does your skin need today?
           </h2>
-          <p className="text-xs sm:text-sm text-[#181818]/70 font-light leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#2D3A1F]/75 font-light leading-relaxed">
             Select an immediate dermal priority to view biomimetic formulas engineered specifically for your skin state.
           </p>
         </div>
@@ -65,8 +66,8 @@ export const SkinConcernFinder: React.FC<SkinConcernFinderProps> = ({
               onClick={() => setSelectedConcern(concern.id)}
               className={`px-4 sm:px-5 py-2.5 text-xs tracking-wider uppercase font-medium transition-all cursor-pointer ${
                 selectedConcern === concern.id
-                  ? 'bg-[#181818] text-[#F7F4EF] shadow-xs'
-                  : 'bg-white border border-[#D8D1C7] text-[#181818] hover:border-[#181818]'
+                  ? 'bg-[#2D3A1F] text-[#F4F1E8] shadow-xs'
+                  : 'bg-[#E8E2D0] border border-[#D8D7CC] text-[#2D3A1F] hover:border-[#2D3A1F]'
               }`}
             >
               {concern.label}
@@ -76,8 +77,8 @@ export const SkinConcernFinder: React.FC<SkinConcernFinderProps> = ({
 
         {/* Diagnostic Explanation Banner */}
         {activeConcernObj && (
-          <div className="max-w-3xl mx-auto bg-white p-4 border border-[#E5DFD5] text-center text-xs text-[#181818]/80 font-light">
-            <strong className="font-medium text-[#181818] uppercase tracking-wider text-[11px] block sm:inline mr-2">
+          <div className="max-w-3xl mx-auto bg-[#E8E2D0] p-4 border border-[#D8D7CC] text-center text-xs text-[#2D3A1F]/80 font-light">
+            <strong className="font-medium text-[#2D3A1F] uppercase tracking-wider text-[11px] block sm:inline mr-2">
               Clinical Rationale:
             </strong>
             {activeConcernObj.description}.
@@ -85,7 +86,7 @@ export const SkinConcernFinder: React.FC<SkinConcernFinderProps> = ({
         )}
 
         {/* Matched Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {matchedProducts.map((product) => (
             <div
               key={product.id}
@@ -94,10 +95,10 @@ export const SkinConcernFinder: React.FC<SkinConcernFinderProps> = ({
             >
               <div className="space-y-3">
                 <div className="aspect-square bg-[#F7F4EF] overflow-hidden relative">
-                  <img
+                  <LuxuryImage
                     src={product.images[0]}
                     alt={product.name}
-                    referrerPolicy="no-referrer"
+                    fallbackText={product.type}
                     className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
                   />
                   {product.badge && (

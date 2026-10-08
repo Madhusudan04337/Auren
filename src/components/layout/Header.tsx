@@ -43,17 +43,17 @@ export const Header: React.FC<HeaderProps> = ({
     <header
       className={`sticky top-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#F7F4EF]/95 backdrop-blur-md shadow-xs py-3 border-b border-[#E5DFD5]'
-          : 'bg-[#F7F4EF] py-5 border-b border-transparent'
+          ? 'bg-[#2D3A1F]/95 backdrop-blur-md shadow-md py-3.5 border-b border-[#F4F1E8]/15'
+          : 'bg-[#2D3A1F] py-5 border-b border-[#F4F1E8]/10'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
         <div className="flex items-center justify-between">
           {/* Mobile menu trigger */}
           <div className="flex items-center lg:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-[#181818] hover:opacity-70 transition-opacity"
+              className="p-2 text-[#F4F1E8] hover:text-[#B8A678] transition-colors"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -66,34 +66,34 @@ export const Header: React.FC<HeaderProps> = ({
             className="text-left group cursor-pointer focus:outline-none"
             aria-label="AUREN Home"
           >
-            <span className="font-serif text-2xl sm:text-3xl tracking-[0.25em] font-normal uppercase text-[#181818] transition-opacity group-hover:opacity-80">
+            <span className="font-serif text-2xl sm:text-3xl tracking-[0.25em] font-normal uppercase text-[#F4F1E8] transition-opacity group-hover:opacity-85">
               AUREN
             </span>
           </button>
 
           {/* Zone 2: Clean text navigation links */}
-          <nav className="hidden lg:flex items-center space-x-8 text-xs tracking-[0.18em] uppercase font-medium text-[#181818]/80">
+          <nav className="hidden lg:flex items-center space-x-8 text-xs tracking-[0.2em] uppercase font-medium text-[#F4F1E8]/85">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item)}
-                className={`relative py-1 hover:text-[#181818] transition-colors focus:outline-none cursor-pointer ${
-                  currentPage === item.id ? 'text-[#181818] font-semibold' : ''
+                className={`relative py-1 hover:text-[#B8A678] transition-colors focus:outline-none cursor-pointer ${
+                  currentPage === item.id ? 'text-[#F4F1E8] font-semibold' : 'text-[#F4F1E8]/80'
                 }`}
               >
                 {item.label}
-                {(currentPage === item.id) && (
-                  <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#181818]" />
+                {currentPage === item.id && (
+                  <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#B8A678]" />
                 )}
               </button>
             ))}
           </nav>
 
           {/* Zone 3: Primary Actions */}
-          <div className="flex items-center space-x-5 text-[#181818]">
+          <div className="flex items-center space-x-5 text-[#F4F1E8]">
             <button
               onClick={onOpenSearch}
-              className="p-1 hover:opacity-70 transition-opacity focus:outline-none cursor-pointer"
+              className="p-1 hover:text-[#B8A678] transition-colors focus:outline-none cursor-pointer"
               aria-label="Search Catalog and Journal"
             >
               <Search className="w-4 h-4" />
@@ -101,12 +101,12 @@ export const Header: React.FC<HeaderProps> = ({
 
             <button
               onClick={() => onNavigate('wishlist')}
-              className="p-1 hover:opacity-70 transition-opacity focus:outline-none relative cursor-pointer"
+              className="p-1 hover:text-[#B8A678] transition-colors focus:outline-none relative cursor-pointer"
               aria-label={`Wishlist (${wishlistCount} saved)`}
             >
               <Heart className="w-4 h-4" />
               {wishlistCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-[#543544] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-mono">
+                <span className="absolute -top-1.5 -right-1.5 bg-[#B8A678] text-[#2D3A1F] font-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-mono">
                   {wishlistCount}
                 </span>
               )}
@@ -114,12 +114,12 @@ export const Header: React.FC<HeaderProps> = ({
 
             <button
               onClick={openCart}
-              className="p-1 hover:opacity-70 transition-opacity focus:outline-none relative cursor-pointer"
+              className="p-1 hover:text-[#B8A678] transition-colors focus:outline-none relative cursor-pointer"
               aria-label={`Shopping Bag (${totalItemCount} items)`}
             >
               <ShoppingBag className="w-4 h-4" />
               {totalItemCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-[#181818] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-mono">
+                <span className="absolute -top-1.5 -right-1.5 bg-[#B8A678] text-[#2D3A1F] font-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-mono">
                   {totalItemCount}
                 </span>
               )}
@@ -129,23 +129,23 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden mt-4 pt-4 border-t border-[#E5DFD5] pb-4 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="lg:hidden mt-4 pt-4 border-t border-[#F4F1E8]/15 pb-4 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200 bg-[#2D3A1F]">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item)}
-                className="block w-full text-left py-2 px-2 text-sm tracking-[0.15em] uppercase text-[#181818] hover:bg-[#E8DFD3]/40 rounded-sm"
+                className="block w-full text-left py-2 px-2 text-sm tracking-[0.15em] uppercase text-[#F4F1E8] hover:bg-white/10 rounded-xs"
               >
                 {item.label}
               </button>
             ))}
-            <div className="pt-2 border-t border-[#E5DFD5]/60 flex items-center justify-between px-2 text-xs text-[#181818]/60">
+            <div className="pt-2 border-t border-[#F4F1E8]/10 flex items-center justify-between px-2 text-xs text-[#F4F1E8]/60">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onNavigate('wishlist');
                 }}
-                className="py-1 hover:text-[#181818]"
+                className="py-1 hover:text-[#B8A678]"
               >
                 Wishlist ({wishlistCount})
               </button>
@@ -154,7 +154,7 @@ export const Header: React.FC<HeaderProps> = ({
                   setMobileMenuOpen(false);
                   openCart();
                 }}
-                className="py-1 hover:text-[#181818]"
+                className="py-1 hover:text-[#B8A678]"
               >
                 Shopping Bag ({totalItemCount})
               </button>

@@ -6,6 +6,7 @@ import { useWishlist } from '../context/WishlistContext';
 import { ShadeSelector } from '../components/product/ShadeSelector';
 import { FragrancePyramid } from '../components/product/FragrancePyramid';
 import { RoutineBuilder } from '../components/product/RoutineBuilder';
+import { LuxuryImage } from '../components/ui/LuxuryImage';
 
 interface ProductDetailPageProps {
   product: Product;
@@ -94,13 +95,13 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   };
 
   return (
-    <div className="bg-[#F7F4EF] min-h-screen py-8 sm:py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <div className="bg-[#F4F1E8] min-h-screen py-8 sm:py-12 text-[#2D3A1F]">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 space-y-16">
         {/* Navigation Breadcrumb */}
-        <div className="flex items-center justify-between text-xs text-[#181818]/60 border-b border-[#E5DFD5] pb-4">
+        <div className="flex items-center justify-between text-xs text-[#2D3A1F]/60 border-b border-[#D8D7CC] pb-4">
           <button
             onClick={onBack}
-            className="flex items-center gap-1.5 hover:text-[#181818] uppercase tracking-wider font-medium cursor-pointer"
+            className="flex items-center gap-1.5 hover:text-[#2D3A1F] uppercase tracking-wider font-medium cursor-pointer"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Return to Collection</span>
@@ -110,7 +111,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             <span aria-hidden="true">/</span>
             <span>{product.category}</span>
             <span aria-hidden="true">/</span>
-            <span className="text-[#181818] font-medium">{product.name}</span>
+            <span className="text-[#2D3A1F] font-medium">{product.name}</span>
           </div>
         </div>
 
@@ -119,15 +120,15 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
           {/* Left Column: High-Res Gallery */}
           <div className="lg:col-span-7 space-y-4">
             {/* Primary Main Image */}
-            <div className="aspect-square bg-[#E8DFD3] border border-[#E5DFD5] overflow-hidden relative shadow-xs">
-              <img
+            <div className="aspect-square bg-[#E8E2D0]/60 border border-[#D8D7CC] overflow-hidden relative shadow-xs">
+              <LuxuryImage
                 src={product.images[activeImageIndex] || product.images[0]}
                 alt={product.name}
-                referrerPolicy="no-referrer"
+                fallbackText={product.type}
                 className="w-full h-full object-cover transition-all duration-500"
               />
               {product.badge && (
-                <div className="absolute top-4 left-4 bg-[#181818] text-white text-[10px] tracking-widest uppercase px-3 py-1 font-medium">
+                <div className="absolute top-4 left-4 bg-[#2D3A1F] text-[#F4F1E8] text-[10px] tracking-widest uppercase px-3 py-1 font-medium">
                   {product.badge}
                 </div>
               )}
@@ -146,10 +147,9 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                         : 'border-[#E5DFD5] opacity-70 hover:opacity-100'
                     }`}
                   >
-                    <img
+                    <LuxuryImage
                       src={img}
                       alt={`View ${idx + 1}`}
-                      referrerPolicy="no-referrer"
                       className="w-full h-full object-cover"
                     />
                   </button>
@@ -262,8 +262,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   onClick={handleAddToCart}
                   className={`flex-1 py-3.5 text-xs uppercase tracking-[0.2em] font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs ${
                     addedSuccess
-                      ? 'bg-[#9DA895] text-white'
-                      : 'bg-[#181818] text-white hover:bg-black'
+                      ? 'bg-[#B8A678] text-[#2D3A1F]'
+                      : 'bg-[#2D3A1F] text-[#F4F1E8] hover:bg-[#1E2714]'
                   }`}
                 >
                   {addedSuccess ? (
@@ -280,41 +280,41 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 <button
                   onClick={() => toggleWishlist(product.id)}
                   aria-label="Save to Wishlist"
-                  className="p-3.5 border border-[#D8D1C7] bg-white hover:bg-[#F2EDE4] transition-colors cursor-pointer"
+                  className="p-3.5 border border-[#D8D7CC] bg-white hover:bg-[#E8E2D0] transition-colors cursor-pointer"
                 >
                   <Heart
                     className={`w-4 h-4 ${
-                      isFavorited ? 'fill-[#543544] text-[#543544]' : 'text-[#181818]'
+                      isFavorited ? 'fill-[#B8A678] text-[#B8A678]' : 'text-[#2D3A1F]'
                     }`}
                   />
                 </button>
               </div>
 
               {/* Delivery and Stock Trust */}
-              <div className="pt-2 text-[11px] text-[#181818]/70 space-y-1.5">
-                <div className="flex items-center gap-1.5 text-[#9DA895] font-medium">
-                  <Truck className="w-3.5 h-3.5" />
+              <div className="pt-2 text-[11px] text-[#2D3A1F]/70 space-y-1.5">
+                <div className="flex items-center gap-1.5 text-[#2D3A1F] font-medium">
+                  <Truck className="w-3.5 h-3.5 text-[#B8A678]" />
                   <span>Complimentary Express Atelier Courier on orders above ₹1,499</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-[#181818]/60">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#CDAA7D]" />
+                <div className="flex items-center gap-1.5 text-[#2D3A1F]/65">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#B8A678]" />
                   <span>Two complimentary luxury discovery vials curated at checkout</span>
                 </div>
               </div>
             </div>
 
             {/* Trust Badges */}
-            <div className="pt-4 border-t border-[#E5DFD5] grid grid-cols-2 gap-2 text-xs text-[#181818]/70">
+            <div className="pt-4 border-t border-[#D8D7CC] grid grid-cols-2 gap-2 text-xs text-[#2D3A1F]/75">
               <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#CDAA7D]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#B8A678]" />
                 <span>Dermatologically Tested</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#CDAA7D]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#B8A678]" />
                 <span>100% Recyclable Glass</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#CDAA7D]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#B8A678]" />
                 <span>Certified Cruelty-Free</span>
               </div>
               <div className="flex items-center gap-1.5">
@@ -516,17 +516,17 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         </div>
 
         {/* Mobile Sticky Purchase Bar (meets Section 1.I 15% mobile sticky cap) */}
-        <div className="sm:hidden fixed bottom-0 left-0 right-0 bg-[#F7F4EF]/95 backdrop-blur-md p-3 border-t border-[#E5DFD5] z-30 flex items-center justify-between gap-3 shadow-lg">
+        <div className="sm:hidden fixed bottom-0 left-0 right-0 bg-[#F4F1E8]/95 backdrop-blur-md p-3 border-t border-[#D8D7CC] z-30 flex items-center justify-between gap-3 shadow-lg">
           <div className="overflow-hidden">
-            <div className="font-serif text-xs font-medium text-[#181818] truncate">{product.name}</div>
-            <div className="font-mono text-xs font-bold tabular-nums text-[#181818]">
+            <div className="font-serif text-xs font-medium text-[#2D3A1F] truncate">{product.name}</div>
+            <div className="font-mono text-xs font-bold tabular-nums text-[#2D3A1F]">
               ₹{currentPrice.toLocaleString()}
             </div>
           </div>
           <button
             onClick={handleAddToCart}
             className={`px-5 py-2.5 text-xs uppercase tracking-widest font-semibold transition-colors shrink-0 cursor-pointer ${
-              addedSuccess ? 'bg-[#9DA895] text-white' : 'bg-[#181818] text-white hover:bg-black'
+              addedSuccess ? 'bg-[#B8A678] text-[#2D3A1F]' : 'bg-[#2D3A1F] text-[#F4F1E8] hover:bg-[#1E2714]'
             }`}
           >
             {addedSuccess ? 'Added' : 'Add to Bag'}

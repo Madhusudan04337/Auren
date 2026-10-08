@@ -3,6 +3,7 @@ import { Search, X, ArrowRight, Sparkles, BookOpen } from 'lucide-react';
 import { PRODUCTS, INGREDIENT_STORIES } from '../../data/products';
 import { ARTICLES } from '../../data/journal';
 import { Product, Article } from '../../types';
+import { LuxuryImage } from '../ui/LuxuryImage';
 
 interface SearchOverlayProps {
   isOpen: boolean;
@@ -66,7 +67,7 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-start justify-center p-4 sm:p-6 animate-in fade-in duration-200">
-      <div className="bg-[#F7F4EF] max-w-3xl w-full border border-[#E5DFD5] shadow-2xl overflow-hidden mt-12 sm:mt-20">
+      <div className="bg-[#FAFAFA] max-w-3xl w-full border border-[#E5E5E5] shadow-2xl overflow-hidden mt-12 sm:mt-20">
         {/* Search Input Bar */}
         <div className="p-4 sm:p-6 border-b border-[#E5DFD5] flex items-center gap-3 bg-white">
           <Search className="w-5 h-5 text-[#181818]/50" />
@@ -129,10 +130,10 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({
                       }}
                       className="p-3 bg-white border border-[#E5DFD5] flex items-center gap-3 cursor-pointer hover:border-[#181818] transition-colors"
                     >
-                      <img
+                      <LuxuryImage
                         src={prod.images[0]}
                         alt={prod.name}
-                        referrerPolicy="no-referrer"
+                        fallbackText={prod.category}
                         className="w-12 h-12 object-cover bg-[#F7F4EF]"
                       />
                       <div className="overflow-hidden">
@@ -167,10 +168,10 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({
                         className="py-3 flex items-center justify-between hover:bg-white/60 px-2 cursor-pointer transition-colors"
                       >
                         <div className="flex items-center gap-3">
-                          <img
+                          <LuxuryImage
                             src={prod.images[0]}
                             alt={prod.name}
-                            referrerPolicy="no-referrer"
+                            fallbackText={prod.category}
                             className="w-12 h-12 object-cover bg-[#F7F4EF] border border-[#E5DFD5]"
                           />
                           <div>

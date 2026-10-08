@@ -4,6 +4,7 @@ import { X, Star, Heart, Check, Sparkles } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { ShadeSelector } from './ShadeSelector';
+import { LuxuryImage } from '../ui/LuxuryImage';
 
 interface ProductQuickViewProps {
   product: Product | null;
@@ -45,7 +46,7 @@ export const ProductQuickView: React.FC<ProductQuickViewProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
-      <div className="relative bg-[#F7F4EF] max-w-4xl w-full border border-[#E5DFD5] shadow-2xl overflow-hidden my-8">
+      <div className="relative bg-[#FAFAFA] max-w-4xl w-full border border-[#E5E5E5] shadow-2xl overflow-hidden my-8">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -58,10 +59,10 @@ export const ProductQuickView: React.FC<ProductQuickViewProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* Visual stage */}
           <div className="relative aspect-square md:aspect-auto bg-[#EFEAE2]">
-            <img
+            <LuxuryImage
               src={product.images[0]}
               alt={product.name}
-              referrerPolicy="no-referrer"
+              fallbackText={product.type}
               className="w-full h-full object-cover object-center"
             />
             {product.badge && (

@@ -3,6 +3,7 @@ import { Product } from '../../types';
 import { PRODUCTS } from '../../data/products';
 import { useCart } from '../../context/CartContext';
 import { Check, Plus, Sparkles } from 'lucide-react';
+import { LuxuryImage } from '../ui/LuxuryImage';
 
 interface RoutineBuilderProps {
   currentProduct: Product;
@@ -108,10 +109,10 @@ export const RoutineBuilder: React.FC<RoutineBuilderProps> = ({
                 onClick={() => onSelectProduct(prod)}
                 className="my-3 aspect-square bg-[#F7F4EF] overflow-hidden cursor-pointer"
               >
-                <img
+                <LuxuryImage
                   src={prod.images[0]}
                   alt={prod.name}
-                  referrerPolicy="no-referrer"
+                  fallbackText={prod.category}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>

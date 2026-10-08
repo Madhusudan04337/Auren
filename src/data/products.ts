@@ -1,10 +1,16 @@
 import { Product } from '../types';
 
-export const HERO_IMAGE = '/src/assets/images/hero_editorial_beauty_1791455299205.jpg';
-export const CLOUD_BARRIER_IMAGE = '/src/assets/images/product_cloud_barrier_1791455311264.jpg';
-export const NOIR_FRAGRANCE_IMAGE = '/src/assets/images/product_noir_fragrance_1791455322897.jpg';
-export const SKIN_TINT_IMAGE = '/src/assets/images/product_skin_tint_1791455332361.jpg';
-export const MORNING_RITUAL_IMAGE = '/src/assets/images/ritual_morning_reset_1791455342898.jpg';
+import heroImg from '../assets/images/hero_editorial_beauty_1791455299205.jpg';
+import cloudBarrierImg from '../assets/images/product_cloud_barrier_1791455311264.jpg';
+import noirFragranceImg from '../assets/images/product_noir_fragrance_1791455322897.jpg';
+import skinTintImg from '../assets/images/product_skin_tint_1791455332361.jpg';
+import morningRitualImg from '../assets/images/ritual_morning_reset_1791455342898.jpg';
+
+export const HERO_IMAGE = heroImg;
+export const CLOUD_BARRIER_IMAGE = cloudBarrierImg;
+export const NOIR_FRAGRANCE_IMAGE = noirFragranceImg;
+export const SKIN_TINT_IMAGE = skinTintImg;
+export const MORNING_RITUAL_IMAGE = morningRitualImg;
 
 export const PRODUCTS: Product[] = [
   {

@@ -11,7 +11,7 @@ export const IngredientStory: React.FC<IngredientStoryProps> = ({
 }) => {
   return (
     <section className="bg-white py-16 sm:py-24 border-b border-[#E5DFD5]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 space-y-12">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
           <span className="text-xs uppercase tracking-[0.25em] text-[#543544] font-semibold flex items-center justify-center gap-1.5">

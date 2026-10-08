@@ -66,7 +66,7 @@ export default function App() {
   return (
     <CartProvider>
       <WishlistProvider>
-        <div className="min-h-screen flex flex-col bg-[#F7F4EF] text-[#181818] selection:bg-[#543544] selection:text-white">
+        <div className="min-h-screen flex flex-col bg-[#F4F1E8] text-[#2D3A1F] selection:bg-[#2D3A1F] selection:text-[#F4F1E8]">
           {/* 1. Global Announcement */}
           <AnnouncementBar />
 

@@ -18,8 +18,8 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
   const { wishlistProducts, wishlistCount } = useWishlist();
 
   return (
-    <div className="bg-[#F7F4EF] min-h-screen py-10 sm:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+    <div className="bg-[#FAFAFA] min-h-screen py-10 sm:py-16">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 space-y-10">
         {/* Header */}
         <div className="space-y-3 border-b border-[#E5DFD5] pb-8">
           <div className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[#543544] font-semibold">

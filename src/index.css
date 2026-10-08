@@ -1,44 +1,58 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-  --color-ivory: #F7F4EF;
-  --color-charcoal: #181818;
-  --color-sand: #E8DFD3;
-  --color-plum: #543544;
-  --color-sage: #9DA895;
-  --color-terracotta: #B9684F;
-  --color-warm-border: #E5DFD5;
-  --color-night: #171515;
-  --color-gold: #CDAA7D;
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Sora", system-ui, -apple-system, sans-serif;
+  
+  /* Fraunces & Sora Brand Kit Palette */
+  --color-kit-bg: #F4F1E8;
+  --color-kit-text: #2D3A1F;
+  --color-kit-primary: #2D3A1F;
+  --color-kit-accent: #B8A678;
+  --color-kit-surface: #E8E2D0;
+  --color-kit-border: #D8D7CC;
+
+  /* System Color mappings */
+  --color-ivory: #F4F1E8;
+  --color-charcoal: #2D3A1F;
+  --color-sand: #E8E2D0;
+  --color-plum: #2D3A1F;
+  --color-sage: #B8A678;
+  --color-terracotta: #B8A678;
+  --color-warm-border: #D8D7CC;
+  --color-night: #2D3A1F;
+  --color-gold: #B8A678;
 }
 
 :root {
-  --font-display: "Cormorant Garamond", serif;
-  --font-body: "Plus Jakarta Sans", sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Sora", sans-serif;
 }
 
 body {
-  font-family: "Plus Jakarta Sans", sans-serif;
-  background-color: #F7F4EF;
-  color: #181818;
+  font-family: "Sora", sans-serif;
+  background-color: #F4F1E8;
+  color: #2D3A1F;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom subtle scrollbars */
+h1, h2, h3, h4, .font-serif {
+  font-family: "Fraunces", Georgia, serif;
+}
+
+/* Custom subtle scrollbars styled after Fraunces & Sora kit */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F7F4EF;
+  background: #F4F1E8;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D8D1C7;
+  background: #D8D7CC;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B9684F;
+  background: #B8A678;
 }

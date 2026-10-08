@@ -70,25 +70,25 @@ export const ShopPage: React.FC<ShopPageProps> = ({
   };
 
   return (
-    <div className="bg-[#F7F4EF] min-h-screen py-10 sm:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+    <div className="bg-[#F4F1E8] min-h-screen py-10 sm:py-16 text-[#2D3A1F]">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 space-y-10">
         {/* Collection Header */}
-        <div className="space-y-3 border-b border-[#E5DFD5] pb-8">
-          <div className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[#543544] font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-[#CDAA7D]" />
+        <div className="space-y-3 border-b border-[#D8D7CC] pb-8">
+          <div className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[#2D3A1F] font-semibold">
+            <Sparkles className="w-3.5 h-3.5 text-[#B8A678]" />
             <span>The Complete Atelier</span>
           </div>
-          <h1 className="font-serif text-4xl sm:text-5xl text-[#181818] font-normal">
+          <h1 className="font-serif text-4xl sm:text-5xl text-[#2D3A1F] font-normal">
             {selectedCategory === 'All' ? 'All Formulations' : `${selectedCategory} Collection`}
           </h1>
-          <p className="text-xs sm:text-sm text-[#181818]/70 max-w-xl font-light leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#2D3A1F]/75 max-w-xl font-light leading-relaxed">
             Architectural formulas crafted for living skin and personal olfactory resonance.
             Filtered by skin state, lipid needs, and scent profiles.
           </p>
         </div>
 
         {/* Filter & Sort Bar */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 border border-[#E5DFD5] shadow-xs">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#E8E2D0]/60 p-4 border border-[#D8D7CC] shadow-xs">
           {/* Category Tabs */}
           <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
             {categories.map((cat) => (
@@ -97,8 +97,8 @@ export const ShopPage: React.FC<ShopPageProps> = ({
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-3 py-1.5 text-xs uppercase tracking-wider font-medium whitespace-nowrap transition-colors cursor-pointer ${
                   selectedCategory === cat
-                    ? 'bg-[#181818] text-white'
-                    : 'text-[#181818]/70 hover:text-[#181818] hover:bg-[#F7F4EF]'
+                    ? 'bg-[#2D3A1F] text-[#F4F1E8]'
+                    : 'text-[#2D3A1F]/75 hover:text-[#2D3A1F] hover:bg-[#F4F1E8]'
                 }`}
               >
                 {cat}
@@ -107,14 +107,14 @@ export const ShopPage: React.FC<ShopPageProps> = ({
           </div>
 
           {/* Sort & Mobile Filter Toggle */}
-          <div className="flex items-center justify-between md:justify-end gap-3 pt-2 md:pt-0 border-t md:border-t-0 border-[#E5DFD5]">
+          <div className="flex items-center justify-between md:justify-end gap-3 pt-2 md:pt-0 border-t md:border-t-0 border-[#D8D7CC]">
             {/* Sort Dropdown */}
             <div className="flex items-center gap-2 text-xs">
-              <ArrowUpDown className="w-3.5 h-3.5 text-[#181818]/50" />
+              <ArrowUpDown className="w-3.5 h-3.5 text-[#2D3A1F]/60" />
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="bg-transparent border-none text-xs text-[#181818] font-medium focus:outline-none cursor-pointer pr-4"
+                className="bg-transparent border-none text-xs text-[#2D3A1F] font-medium focus:outline-none cursor-pointer pr-4"
               >
                 <option value="featured">Featured Atelier Order</option>
                 <option value="price-asc">Price: Low to High</option>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, Trash2, ArrowRight, Sparkles, Check } from 'lucide-react';
 import { useCart, COMPLIMENTARY_SAMPLES } from '../../context/CartContext';
+import { LuxuryImage } from '../ui/LuxuryImage';
 
 interface CartDrawerProps {
   onNavigate: (page: string, params?: any) => void;
@@ -29,7 +30,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onNavigate }) => {
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden bg-black/50 backdrop-blur-xs flex justify-end animate-in fade-in duration-200">
-      <div className="w-full max-w-md bg-[#F7F4EF] h-full shadow-2xl flex flex-col justify-between border-l border-[#E5DFD5] animate-in slide-in-from-right duration-300">
+      <div className="w-full max-w-md bg-[#FAFAFA] h-full shadow-2xl flex flex-col justify-between border-l border-[#E5E5E5] animate-in slide-in-from-right duration-300">
         {/* Header */}
         <div className="p-5 border-b border-[#E5DFD5] flex items-center justify-between bg-white">
           <div className="flex items-baseline gap-2">
@@ -96,10 +97,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onNavigate }) => {
                 <div key={item.id} className="pt-4 first:pt-0 flex gap-4">
                   {/* Thumbnail */}
                   <div className="w-20 h-20 bg-[#EFEAE2] shrink-0 border border-[#E5DFD5] overflow-hidden">
-                    <img
+                    <LuxuryImage
                       src={item.product.images[0]}
                       alt={item.product.name}
-                      referrerPolicy="no-referrer"
+                      fallbackText={item.product.category}
                       className="w-full h-full object-cover"
                     />
                   </div>

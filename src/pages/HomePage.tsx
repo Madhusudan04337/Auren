@@ -9,6 +9,7 @@ import { PRODUCTS } from '../data/products';
 import { ARTICLES } from '../data/journal';
 import { Product, Ritual, Article } from '../types';
 import { ArrowRight, Sparkles, BookOpen } from 'lucide-react';
+import { LuxuryImage } from '../components/ui/LuxuryImage';
 
 interface HomePageProps {
   onNavigate: (page: string, params?: any) => void;
@@ -54,10 +55,10 @@ export const HomePage: React.FC<HomePageProps> = ({
       />
 
       {/* 2. Quick Discovery Chips */}
-      <section className="bg-white py-6 border-b border-[#E5DFD5]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-[#E8E2D0]/30 py-6 border-b border-[#D8D7CC]">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
           <div className="flex items-center gap-3 overflow-x-auto no-scrollbar py-1">
-            <span className="text-xs uppercase tracking-widest text-[#181818]/50 font-semibold shrink-0 mr-2">
+            <span className="text-xs uppercase tracking-widest text-[#2D3A1F]/60 font-semibold shrink-0 mr-2">
               Discover:
             </span>
             {discoveryChips.map((chip) => (
@@ -66,8 +67,8 @@ export const HomePage: React.FC<HomePageProps> = ({
                 onClick={() => setSelectedChip(chip.id)}
                 className={`px-4 py-2 text-xs uppercase tracking-wider font-medium whitespace-nowrap transition-colors cursor-pointer shrink-0 ${
                   selectedChip === chip.id
-                    ? 'bg-[#181818] text-white'
-                    : 'bg-[#F7F4EF] text-[#181818] hover:bg-[#E8DFD3]'
+                    ? 'bg-[#2D3A1F] text-[#F4F1E8]'
+                    : 'bg-[#F4F1E8] border border-[#D8D7CC] text-[#2D3A1F] hover:bg-[#E8E2D0]'
                 }`}
               >
                 {chip.label}
@@ -78,21 +79,21 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* 3. Curated Bestsellers Showcase */}
-      <section className="bg-[#F7F4EF] py-16 sm:py-24 border-b border-[#E5DFD5]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#E5DFD5] pb-6">
+      <section className="bg-[#F4F1E8] py-16 sm:py-24 border-b border-[#D8D7CC]">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 space-y-10">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#D8D7CC] pb-6">
             <div className="space-y-2">
-              <span className="text-xs uppercase tracking-[0.25em] text-[#543544] font-semibold flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-[#CDAA7D]" />
+              <span className="text-xs uppercase tracking-[0.25em] text-[#2D3A1F] font-semibold flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-[#B8A678]" />
                 Atelier Signatures
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl text-[#181818] font-normal">
+              <h2 className="font-serif text-3xl sm:text-4xl text-[#2D3A1F] font-normal">
                 Curated Bestsellers
               </h2>
             </div>
             <button
               onClick={() => onNavigate('shop')}
-              className="text-xs uppercase tracking-[0.18em] font-semibold text-[#181818] hover:text-[#543544] flex items-center gap-1.5 cursor-pointer"
+              className="text-xs uppercase tracking-[0.18em] font-semibold text-[#2D3A1F] hover:text-[#B8A678] flex items-center gap-1.5 cursor-pointer"
             >
               <span>Explore Complete Atelier</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -138,21 +139,21 @@ export const HomePage: React.FC<HomePageProps> = ({
       <CommunitySection onSelectProduct={onSelectProduct} />
 
       {/* 8. Editorial Journal Stories */}
-      <section className="bg-white py-16 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#E5DFD5] pb-6">
+      <section className="bg-[#E8E2D0]/30 py-16 sm:py-24 border-t border-[#D8D7CC]">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 space-y-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#D8D7CC] pb-6">
             <div className="space-y-2">
-              <span className="text-xs uppercase tracking-[0.25em] text-[#543544] font-semibold flex items-center gap-1.5">
-                <BookOpen className="w-3.5 h-3.5 text-[#CDAA7D]" />
+              <span className="text-xs uppercase tracking-[0.25em] text-[#2D3A1F] font-semibold flex items-center gap-1.5">
+                <BookOpen className="w-3.5 h-3.5 text-[#B8A678]" />
                 The Gazette
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl text-[#181818] font-normal">
+              <h2 className="font-serif text-3xl sm:text-4xl text-[#2D3A1F] font-normal">
                 Essays on Skin &amp; Scent
               </h2>
             </div>
             <button
               onClick={() => onNavigate('journal')}
-              className="text-xs uppercase tracking-[0.18em] font-semibold text-[#181818] hover:text-[#543544] flex items-center gap-1.5 cursor-pointer"
+              className="text-xs uppercase tracking-[0.18em] font-semibold text-[#2D3A1F] hover:text-[#B8A678] flex items-center gap-1.5 cursor-pointer"
             >
               <span>Read The Journal</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -166,23 +167,23 @@ export const HomePage: React.FC<HomePageProps> = ({
                 onClick={() => onSelectArticle(article)}
                 className="group cursor-pointer space-y-4"
               >
-                <div className="aspect-16/10 overflow-hidden bg-[#FAF8F5] border border-[#E5DFD5]">
-                  <img
+                <div className="aspect-16/10 overflow-hidden bg-[#F4F1E8] border border-[#D8D7CC]">
+                  <LuxuryImage
                     src={article.featuredImage}
                     alt={article.title}
-                    referrerPolicy="no-referrer"
+                    fallbackText={article.category}
                     className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <div className="text-[11px] uppercase tracking-widest text-[#CDAA7D] font-medium">
+                  <div className="text-[11px] uppercase tracking-widest text-[#B8A678] font-semibold">
                     {article.category} · {article.readTime}
                   </div>
-                  <h3 className="font-serif text-xl text-[#181818] group-hover:text-[#543544] transition-colors leading-snug">
+                  <h3 className="font-serif text-xl text-[#2D3A1F] group-hover:text-[#B8A678] transition-colors leading-snug">
                     {article.title}
                   </h3>
-                  <p className="text-xs text-[#181818]/70 line-clamp-2 font-light leading-relaxed">
+                  <p className="text-xs text-[#2D3A1F]/75 line-clamp-2 font-light leading-relaxed">
                     {article.excerpt}
                   </p>
                 </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import { HERO_IMAGE, NOIR_FRAGRANCE_IMAGE } from '../../data/products';
-import { Product } from '../../types';
+import { HERO_IMAGE } from '../../data/products';
+import { LuxuryImage } from '../ui/LuxuryImage';
 
 interface HeroSectionProps {
   onExploreShop: () => void;
@@ -15,20 +15,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onSelectProduct
 }) => {
   return (
-    <section className="relative overflow-hidden bg-[#F7F4EF] border-b border-[#E5DFD5]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[#F4F1E8] border-b border-[#D8D7CC]">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-12 md:py-20 lg:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Editorial Left Side */}
           <div className="lg:col-span-6 space-y-6 md:space-y-8">
             <div className="space-y-3">
-              <div className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[#543544] font-semibold">
-                <Sparkles className="w-3.5 h-3.5 text-[#CDAA7D]" />
+              <div className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[#2D3A1F] font-semibold">
+                <Sparkles className="w-3.5 h-3.5 text-[#B8A678]" />
                 <span>Haute Parfumerie &amp; Biomimetic Skincare</span>
               </div>
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#181818] font-normal tracking-tight leading-[1.1] text-balance">
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#2D3A1F] font-normal tracking-tight leading-[1.1] text-balance">
                 Beauty, beyond categories.
               </h1>
-              <p className="text-sm sm:text-base text-[#181818]/75 font-light leading-relaxed max-w-xl">
+              <p className="text-sm sm:text-base text-[#2D3A1F]/80 font-light leading-relaxed max-w-xl">
                 A modern beauty house devoted to slow rituals, considered formulas, and pure self-expression.
                 Crafted without traditional gender boundaries, engineered around the biological needs of living skin.
               </p>
@@ -38,25 +38,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
               <button
                 onClick={onExploreShop}
-                className="bg-[#181818] hover:bg-black text-[#F7F4EF] px-8 py-4 text-xs uppercase tracking-[0.2em] font-medium transition-colors flex items-center justify-center gap-3 cursor-pointer shadow-xs"
+                className="bg-[#2D3A1F] hover:bg-[#1E2714] text-[#F4F1E8] px-8 py-4 text-xs uppercase tracking-[0.2em] font-medium transition-colors flex items-center justify-center gap-3 cursor-pointer shadow-xs"
               >
                 <span>Explore The Collection</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={onExploreRituals}
-                className="border border-[#181818] text-[#181818] hover:bg-[#181818] hover:text-[#F7F4EF] px-8 py-4 text-xs uppercase tracking-[0.2em] font-medium transition-colors flex items-center justify-center cursor-pointer"
+                className="border border-[#2D3A1F] text-[#2D3A1F] hover:bg-[#2D3A1F] hover:text-[#F4F1E8] px-8 py-4 text-xs uppercase tracking-[0.2em] font-medium transition-colors flex items-center justify-center cursor-pointer"
               >
                 Discover Daily Rituals
               </button>
             </div>
 
             {/* Unboxed Proof / Adjacency Markers */}
-            <div className="pt-6 border-t border-[#E5DFD5] flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-[#181818]/70 font-light">
+            <div className="pt-6 border-t border-[#D8D7CC] flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-[#2D3A1F]/70 font-light">
               <span>Haute Parfumerie Extract</span>
-              <span aria-hidden="true">·</span>
+              <span aria-hidden="true" className="text-[#B8A678]">·</span>
               <span>3:1:1 Biomimetic Lipids</span>
-              <span aria-hidden="true">·</span>
+              <span aria-hidden="true" className="text-[#B8A678]">·</span>
               <span>Cruelty-Free &amp; Sustainable Glass</span>
             </div>
           </div>
@@ -64,10 +64,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           {/* Editorial Visual Composition Right Side */}
           <div className="lg:col-span-6 relative">
             <div className="relative aspect-4/3 sm:aspect-16/10 lg:aspect-4/3 overflow-hidden bg-[#E8DFD3] shadow-lg">
-              <img
+              <LuxuryImage
                 src={HERO_IMAGE}
-                alt="AUREN Haute Parfumerie & Skincare Campaign"
-                referrerPolicy="no-referrer"
+                alt="AUREN Haute Parfumerie &amp; Skincare Campaign"
                 className="w-full h-full object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />

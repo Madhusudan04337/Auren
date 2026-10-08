@@ -3,6 +3,7 @@ import { Product } from '../../types';
 import { PRODUCTS, MORNING_RITUAL_IMAGE, HERO_IMAGE, NOIR_FRAGRANCE_IMAGE, SKIN_TINT_IMAGE } from '../../data/products';
 import { Plus, ArrowRight } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
+import { LuxuryImage } from '../ui/LuxuryImage';
 
 interface CommunitySectionProps {
   onSelectProduct: (product: Product) => void;
@@ -59,7 +60,7 @@ export const CommunitySection: React.FC<CommunitySectionProps> = ({ onSelectProd
 
   return (
     <section className="bg-[#FAF8F5] py-16 sm:py-24 border-b border-[#E5DFD5]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 space-y-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#E5DFD5] pb-6">
           <div className="space-y-2">
             <span className="text-xs uppercase tracking-[0.25em] text-[#543544] font-semibold">
@@ -84,10 +85,10 @@ export const CommunitySection: React.FC<CommunitySectionProps> = ({ onSelectProd
             >
               {/* Photo */}
               <div className="aspect-4/3 relative overflow-hidden bg-[#E8DFD3]">
-                <img
+                <LuxuryImage
                   src={story.image}
                   alt={story.name}
-                  referrerPolicy="no-referrer"
+                  fallbackText={story.skinType}
                   className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
                 />
                 <div className="absolute bottom-2 left-2 bg-black/70 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 tracking-wider">

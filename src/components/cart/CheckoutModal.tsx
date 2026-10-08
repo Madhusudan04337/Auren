@@ -53,7 +53,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ onSuccessReturn })
   if (orderCompleted) {
     return (
       <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-200">
-        <div className="bg-[#F7F4EF] max-w-xl w-full p-8 sm:p-10 border border-[#E5DFD5] shadow-2xl space-y-6 text-center my-8">
+        <div className="bg-[#FAFAFA] max-w-xl w-full p-8 sm:p-10 border border-[#E5E5E5] shadow-2xl space-y-6 text-center my-8">
           <div className="w-14 h-14 bg-[#9DA895]/20 text-[#543544] rounded-full mx-auto flex items-center justify-center">
             <Check className="w-7 h-7 text-[#9DA895]" />
           </div>
@@ -124,7 +124,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ onSuccessReturn })
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
-      <div className="bg-[#F7F4EF] max-w-3xl w-full border border-[#E5DFD5] shadow-2xl overflow-hidden my-8">
+      <div className="bg-[#FAFAFA] max-w-3xl w-full border border-[#E5E5E5] shadow-2xl overflow-hidden my-8">
         {/* Header */}
         <div className="p-5 sm:p-6 border-b border-[#E5DFD5] flex items-center justify-between bg-white">
           <div>

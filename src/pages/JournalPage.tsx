@@ -3,6 +3,7 @@ import { ARTICLES } from '../data/journal';
 import { PRODUCTS } from '../data/products';
 import { Article, Product } from '../types';
 import { BookOpen, Sparkles, ArrowRight, ArrowLeft } from 'lucide-react';
+import { LuxuryImage } from '../components/ui/LuxuryImage';
 
 interface JournalPageProps {
   initialArticle?: Article | null;
@@ -30,7 +31,7 @@ export const JournalPage: React.FC<JournalPageProps> = ({
     );
 
     return (
-      <div className="bg-[#F7F4EF] min-h-screen py-10 sm:py-16">
+      <div className="bg-[#FAFAFA] min-h-screen py-10 sm:py-16">
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           {/* Back button */}
           <button
@@ -62,10 +63,10 @@ export const JournalPage: React.FC<JournalPageProps> = ({
 
           {/* Featured Image */}
           <div className="aspect-16/9 bg-[#E8DFD3] border border-[#E5DFD5] overflow-hidden shadow-xs">
-            <img
+            <LuxuryImage
               src={activeArticle.featuredImage}
               alt={activeArticle.title}
-              referrerPolicy="no-referrer"
+              fallbackText={activeArticle.category}
               className="w-full h-full object-cover"
             />
           </div>
@@ -94,10 +95,10 @@ export const JournalPage: React.FC<JournalPageProps> = ({
                     className="bg-white p-4 border border-[#E5DFD5] flex items-center justify-between cursor-pointer hover:border-[#181818] transition-colors"
                   >
                     <div className="flex items-center gap-3">
-                      <img
+                      <LuxuryImage
                         src={prod.images[0]}
                         alt={prod.name}
-                        referrerPolicy="no-referrer"
+                        fallbackText={prod.category}
                         className="w-14 h-14 object-cover bg-[#F7F4EF]"
                       />
                       <div>
@@ -121,8 +122,8 @@ export const JournalPage: React.FC<JournalPageProps> = ({
 
   // Article Listing View
   return (
-    <div className="bg-[#F7F4EF] min-h-screen py-10 sm:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <div className="bg-[#FAFAFA] min-h-screen py-10 sm:py-16">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 space-y-12">
         {/* Page Header */}
         <div className="space-y-3 border-b border-[#E5DFD5] pb-8">
           <div className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[#543544] font-semibold">
@@ -163,10 +164,10 @@ export const JournalPage: React.FC<JournalPageProps> = ({
               className="bg-white border border-[#E5DFD5] overflow-hidden group cursor-pointer hover:border-[#181818] transition-all flex flex-col justify-between shadow-xs"
             >
               <div className="aspect-16/10 bg-[#E8DFD3] overflow-hidden">
-                <img
+                <LuxuryImage
                   src={article.featuredImage}
                   alt={article.title}
-                  referrerPolicy="no-referrer"
+                  fallbackText={article.category}
                   className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
                 />
               </div>
