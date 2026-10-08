@@ -1,0 +1,6 @@
+{
+  "name": "AUREN — Haute Parfumerie & Ritual Skincare",
+  "description": "A luxury editorial beauty house inspired by Haute Parfumerie and considered rituals for every expression.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
