@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -10,40 +10,45 @@
 
 :root {
   --font-display: "Space Grotesk", system-ui, sans-serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-body: "Manrope", "DM Sans", system-ui, sans-serif;
   color-scheme: light dark;
 }
 
 :root, .light {
-  --bg-primary: #f5f7f4;
-  --bg-surface: #ffffff;
-  --bg-elevated: #e9eee9;
-  --bg-subtle: #dfe8e1;
-  --text-primary: #16211b;
-  --text-secondary: #536258;
-  --text-muted: #7b897f;
-  --border-primary: #d7e1d9;
-  --border-subtle: #e8eee9;
-  --accent-gold: #c47d52;
-  --accent-hover: #a9633d;
+  --bg-primary: #f3efe7;
+  --bg-surface: #fbf9f4;
+  --bg-elevated: #e6e2d7;
+  --bg-subtle: #d7ded2;
+  --text-primary: #1d2922;
+  --text-secondary: #526257;
+  --text-muted: #7f897e;
+  --border-primary: #cfd8ca;
+  --border-subtle: #e5e7dc;
+  --accent-gold: #b76f4b;
+  --accent-hover: #945238;
+  --accent-sage: #829582;
 }
 
 .dark {
-  --bg-primary: #0e1511;
-  --bg-surface: #142019;
-  --bg-elevated: #1b2b21;
-  --bg-subtle: #24372a;
-  --text-primary: #f2f7f1;
-  --text-secondary: #b1c0b3;
-  --text-muted: #819487;
-  --border-primary: #2b4031;
-  --border-subtle: #1c2b20;
-  --accent-gold: #e09a6b;
-  --accent-hover: #f0b287;
+  --bg-primary: #101914;
+  --bg-surface: #18251e;
+  --bg-elevated: #223429;
+  --bg-subtle: #2e4638;
+  --text-primary: #f2eee4;
+  --text-secondary: #b7c5b6;
+  --text-muted: #91a394;
+  --border-primary: #385140;
+  --border-subtle: #26392d;
+  --accent-gold: #d49a70;
+  --accent-hover: #e5b18a;
+  --accent-sage: #9cad91;
 }
 
 body {
   font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  letter-spacing: -0.008em;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
