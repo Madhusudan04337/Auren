@@ -1,47 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-serif: "Space Grotesk", system-ui, sans-serif;
-  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-sans: "Manrope", system-ui, -apple-system, sans-serif;
 }
 
 :root {
-  --font-display: "Space Grotesk", system-ui, sans-serif;
-  --font-body: "Manrope", "DM Sans", system-ui, sans-serif;
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-body: "Manrope", system-ui, sans-serif;
   color-scheme: light dark;
 }
 
 :root, .light {
-  --bg-primary: #f3efe7;
-  --bg-surface: #fbf9f4;
-  --bg-elevated: #e6e2d7;
-  --bg-subtle: #d7ded2;
-  --text-primary: #1d2922;
-  --text-secondary: #526257;
-  --text-muted: #7f897e;
-  --border-primary: #cfd8ca;
-  --border-subtle: #e5e7dc;
-  --accent-gold: #b76f4b;
-  --accent-hover: #945238;
-  --accent-sage: #829582;
+  --bg-primary: #f4f0e8;
+  --bg-surface: #fcfaf6;
+  --bg-elevated: #ebe5d9;
+  --bg-subtle: #dce4d9;
+  --text-primary: #1e2a24;
+  --text-secondary: #526259;
+  --text-muted: #7c887d;
+  --border-primary: #cbd6ca;
+  --border-subtle: #e4e8df;
+  --accent-gold: #b86f4c;
+  --accent-hover: #98583d;
+  --accent-sage: #7e9882;
+  --footer-bg: #20352d;
+  --footer-surface: #29453a;
 }
 
 .dark {
-  --bg-primary: #101914;
-  --bg-surface: #18251e;
-  --bg-elevated: #223429;
-  --bg-subtle: #2e4638;
-  --text-primary: #f2eee4;
-  --text-secondary: #b7c5b6;
+  --bg-primary: #121d18;
+  --bg-surface: #1a2b23;
+  --bg-elevated: #263d31;
+  --bg-subtle: #304b3d;
+  --text-primary: #f3eee4;
+  --text-secondary: #bdcbbb;
   --text-muted: #91a394;
-  --border-primary: #385140;
-  --border-subtle: #26392d;
-  --accent-gold: #d49a70;
-  --accent-hover: #e5b18a;
-  --accent-sage: #9cad91;
+  --border-primary: #3d5a49;
+  --border-subtle: #2a4033;
+  --accent-gold: #d39a72;
+  --accent-hover: #e3b18b;
+  --accent-sage: #a7b99a;
+  --footer-bg: #0f1b16;
+  --footer-surface: #1d3026;
 }
 
 body {
@@ -58,10 +62,63 @@ body {
 
 h1, h2, h3, h4, .font-serif {
   font-family: var(--font-display);
-  letter-spacing: -0.035em;
+  font-weight: 400;
+  letter-spacing: -0.025em;
 }
 
 button, a { transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
+
+.site-footer {
+  background: var(--footer-bg);
+  color: var(--text-primary);
+  border-color: color-mix(in srgb, var(--accent-sage) 30%, transparent);
+}
+
+.site-footer__surface {
+  background: color-mix(in srgb, var(--footer-surface) 72%, transparent);
+}
+
+.site-footer__link {
+  color: color-mix(in srgb, var(--text-primary) 72%, transparent);
+  transition: color 220ms ease, transform 220ms ease;
+}
+
+.site-footer__link:hover,
+.site-footer__link:focus-visible {
+  color: var(--accent-gold);
+  transform: translateX(3px);
+}
+
+.reveal-on-load {
+  animation: reveal-on-load 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes reveal-on-load {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-on-scroll {
+    animation: reveal-on-scroll linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 28%;
+  }
+}
+
+@keyframes reveal-on-scroll {
+  from { opacity: 0.25; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* Custom subtle scrollbars styled to adapt to theme */
 ::-webkit-scrollbar {

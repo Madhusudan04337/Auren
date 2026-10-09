@@ -18,9 +18,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   };
 
   return (
-    <footer className="bg-[#24352c] dark:bg-[#0d1712] text-[#f4f0e7] pt-16 pb-12 border-t border-[#9cad91]/30 transition-colors duration-200">
+    <footer className="site-footer pt-20 pb-12 border-t transition-colors duration-300">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/15">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/15 reveal-on-load">
           {/* Brand Column */}
           <div className="md:col-span-4 space-y-6">
             <span className="font-serif text-3xl tracking-[0.25em] font-normal uppercase text-[#f4f0e7] block">
@@ -44,7 +44,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('shop', { category: 'Skin' })}
-                  className="hover:text-[#d49a70] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Lipid Skincare
                 </button>
@@ -52,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('shop', { category: 'Fragrance' })}
-                  className="hover:text-[#d49a70] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Haute Parfumerie
                 </button>
@@ -60,7 +60,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('shop', { category: 'Grooming' })}
-                  className="hover:text-[#d49a70] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Clean Lines Grooming
                 </button>
@@ -68,7 +68,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('shop', { category: 'Makeup' })}
-                  className="hover:text-[#d49a70] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Complexion Fluid
                 </button>
@@ -76,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('rituals')}
-                  className="hover:text-[#d49a70] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Curated Ritual Sets
                 </button>
@@ -92,7 +92,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('journal')}
-                  className="hover:text-[#d49a70] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   The Journal
                 </button>
@@ -108,7 +108,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('the-house')}
-                  className="hover:text-[#d49a70] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   The Maison &amp; Philosophy
                 </button>
@@ -124,7 +124,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('cart')}
-                  className="hover:text-[#d49a70] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Shopping Bag
                 </button>
@@ -132,7 +132,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('checkout')}
-                  className="hover:text-[#d49a70] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Atelier Checkout
                 </button>
@@ -140,7 +140,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('wishlist')}
-                  className="hover:text-[#d49a70] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Saved Wishlist
                 </button>
