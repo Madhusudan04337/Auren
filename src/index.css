@@ -68,6 +68,95 @@ h1, h2, h3, h4, .font-serif {
 
 button, a { transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
 
+.organic-hero::before,
+.organic-hero::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: 999px;
+  filter: blur(0.2px);
+  opacity: 0.72;
+}
+
+.organic-hero::before {
+  width: min(48vw, 700px);
+  height: min(42vw, 620px);
+  right: -14%;
+  top: -22%;
+  background: color-mix(in srgb, var(--accent-sage) 18%, transparent);
+  transform: rotate(-18deg);
+}
+
+.organic-hero::after {
+  width: min(34vw, 480px);
+  height: min(28vw, 390px);
+  left: -16%;
+  bottom: -30%;
+  background: color-mix(in srgb, var(--accent-gold) 12%, transparent);
+  transform: rotate(22deg);
+}
+
+.organic-hero > div,
+.organic-footer > div {
+  position: relative;
+  z-index: 1;
+}
+
+.organic-hero .aspect-4\/3,
+.organic-hero .aspect-16\/10 {
+  border-radius: 48% 52% 42% 58% / 48% 40% 60% 52%;
+  transition: border-radius 700ms cubic-bezier(0.22, 1, 0.36, 1), transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.organic-hero .aspect-4\/3:hover,
+.organic-hero .aspect-16\/10:hover {
+  border-radius: 42% 58% 52% 48% / 55% 46% 54% 45%;
+}
+
+.organic-footer {
+  position: relative;
+  overflow: hidden;
+  border-top-left-radius: 9rem 4rem;
+  border-top-right-radius: 9rem 4rem;
+}
+
+.organic-footer::before {
+  content: "";
+  position: absolute;
+  width: min(55vw, 780px);
+  height: 220px;
+  left: -12%;
+  top: -135px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent-sage) 14%, transparent);
+  transform: rotate(-4deg);
+}
+
+.organic-footer::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  right: -90px;
+  bottom: -130px;
+  border-radius: 47% 53% 64% 36%;
+  background: color-mix(in srgb, var(--accent-gold) 10%, transparent);
+}
+
+@media (max-width: 640px) {
+  .organic-footer {
+    border-top-left-radius: 4rem 2rem;
+    border-top-right-radius: 4rem 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .organic-hero .aspect-4\\/3,
+  .organic-hero .aspect-16\\/10 {
+    transition: none;
+  }
+}
+
 .site-footer {
   background: var(--footer-bg);
   color: var(--text-primary);

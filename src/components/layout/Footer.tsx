@@ -18,7 +18,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   };
 
   return (
-    <footer className="site-footer pt-20 pb-12 border-t transition-colors duration-300">
+    <footer className="site-footer organic-footer pt-20 pb-12 border-t transition-colors duration-300">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/15 reveal-on-load">
           {/* Brand Column */}

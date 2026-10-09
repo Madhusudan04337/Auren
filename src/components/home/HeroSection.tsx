@@ -15,7 +15,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onSelectProduct
 }) => {
   return (
-    <section className="relative overflow-hidden bg-[#FAF8F5] dark:bg-[#0C0C0C] border-b border-[#E5DFD5]/70 dark:border-[#222222] transition-colors duration-200">
+    <section className="organic-hero relative overflow-hidden bg-[#FAF8F5] dark:bg-[#0C0C0C] border-b border-[#E5DFD5]/70 dark:border-[#222222] transition-colors duration-200">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-16 md:py-24 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Editorial Column */}
