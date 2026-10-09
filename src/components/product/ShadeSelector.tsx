@@ -26,28 +26,28 @@ export const ShadeSelector: React.FC<ShadeSelectorProps> = ({
     <div className="space-y-4 pt-2">
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-xs uppercase tracking-widest text-[#181818]/60 font-medium">
+          <span className="text-xs uppercase tracking-widest text-[#121212]/60 dark:text-[#F5F3EF]/60 font-medium">
             Shade Selection
           </span>
-          <div className="font-serif text-base text-[#181818] font-medium mt-0.5">
+          <div className="font-serif text-base text-[#121212] dark:text-[#F5F3EF] font-medium mt-0.5">
             {selectedShade.name}{' '}
-            <span className="text-xs font-sans text-[#181818]/60 font-normal">
+            <span className="text-xs font-sans text-[#121212]/60 dark:text-[#F5F3EF]/60 font-normal">
               ({selectedShade.undertone} undertone)
             </span>
           </div>
         </div>
 
-        {/* Undertone Tabs (Interactive filter control, clean segmented background) */}
-        <div className="flex items-center gap-1 p-1 bg-[#E8DFD3]/40 rounded-sm">
+        {/* Undertone Tabs (Interactive filter control) */}
+        <div className="flex items-center gap-1 p-1 bg-[#F2ECE3] dark:bg-[#1C1C1C] rounded-sm">
           {undertones.map((tone) => (
             <button
               key={tone}
               type="button"
               onClick={() => setFilterUndertone(tone)}
-              className={`px-2 py-0.5 text-[11px] font-medium transition-colors ${
+              className={`px-2 py-0.5 text-[11px] font-medium transition-colors cursor-pointer ${
                 filterUndertone === tone
-                  ? 'bg-white text-[#181818] shadow-xs'
-                  : 'text-[#181818]/60 hover:text-[#181818]'
+                  ? 'bg-white dark:bg-[#2A2A2A] text-[#121212] dark:text-[#F5F3EF] shadow-xs'
+                  : 'text-[#121212]/60 dark:text-[#F5F3EF]/60 hover:text-[#121212] dark:hover:text-[#F5F3EF]'
               }`}
             >
               {tone}
@@ -65,10 +65,10 @@ export const ShadeSelector: React.FC<ShadeSelectorProps> = ({
               key={shade.id}
               type="button"
               onClick={() => onSelectShade(shade)}
-              className={`relative w-9 h-9 rounded-full transition-all focus:outline-none flex items-center justify-center ${
+              className={`relative w-9 h-9 rounded-full transition-all focus:outline-none flex items-center justify-center cursor-pointer ${
                 isSelected
-                  ? 'ring-2 ring-offset-2 ring-[#181818] scale-110 shadow-sm'
-                  : 'hover:scale-105 border border-black/10'
+                  ? 'ring-2 ring-offset-2 ring-[#121212] dark:ring-white scale-110 shadow-sm'
+                  : 'hover:scale-105 border border-black/10 dark:border-white/10'
               }`}
               style={{ backgroundColor: shade.hex }}
               title={`${shade.name} - ${shade.description}`}
@@ -88,9 +88,9 @@ export const ShadeSelector: React.FC<ShadeSelectorProps> = ({
       </div>
 
       {/* Selected Shade Tone Description */}
-      <div className="text-xs text-[#181818]/70 bg-[#F2EDE4]/60 p-3 border-l-2 border-[#181818]">
+      <div className="text-xs text-[#121212]/70 dark:text-[#F5F3EF]/70 bg-[#F2ECE3]/80 dark:bg-[#1A1A1A] p-3 border-l-2 border-[#121212] dark:border-white">
         <p className="font-light leading-relaxed">
-          <strong className="font-medium text-[#181818]">Coverage Match: </strong>
+          <strong className="font-medium text-[#121212] dark:text-[#F5F3EF]">Coverage Match: </strong>
           {selectedShade.description}. Adapts to individual epidermal heat within 60 seconds of gentle patting.
         </p>
       </div>

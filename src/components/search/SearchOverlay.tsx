@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, X, ArrowRight, Sparkles, BookOpen } from 'lucide-react';
+import { Search, X, ArrowRight, BookOpen } from 'lucide-react';
 import { PRODUCTS, INGREDIENT_STORIES } from '../../data/products';
 import { ARTICLES } from '../../data/journal';
 import { Product, Article } from '../../types';
@@ -66,23 +66,23 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({
   const suggestions = ['Ceramide', 'Noir 03', 'Hydration', 'Grooming', 'Skin Tint', 'Solaris', 'Sensitive'];
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-start justify-center p-4 sm:p-6 animate-in fade-in duration-200">
-      <div className="bg-[#FAFAFA] max-w-3xl w-full border border-[#E5E5E5] shadow-2xl overflow-hidden mt-12 sm:mt-20">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/70 backdrop-blur-sm flex items-start justify-center p-4 sm:p-6 animate-in fade-in duration-200">
+      <div className="bg-[#FAF8F5] dark:bg-[#121212] text-[#121212] dark:text-[#F5F3EF] max-w-3xl w-full border border-[#E5DFD5] dark:border-[#262626] shadow-2xl overflow-hidden mt-12 sm:mt-20">
         {/* Search Input Bar */}
-        <div className="p-4 sm:p-6 border-b border-[#E5DFD5] flex items-center gap-3 bg-white">
-          <Search className="w-5 h-5 text-[#181818]/50" />
+        <div className="p-4 sm:p-6 border-b border-[#E5DFD5] dark:border-[#262626] flex items-center gap-3 bg-white dark:bg-[#161616]">
+          <Search className="w-5 h-5 text-[#121212]/50 dark:text-[#F5F3EF]/50" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search products, botanicals, concerns, or journal essays..."
-            className="flex-1 bg-transparent text-sm sm:text-base text-[#181818] placeholder-[#181818]/40 focus:outline-none"
+            className="flex-1 bg-transparent text-sm sm:text-base text-[#121212] dark:text-[#F5F3EF] placeholder-[#121212]/40 dark:placeholder-[#F5F3EF]/40 focus:outline-none"
           />
           {query && (
             <button
               onClick={() => setQuery('')}
-              className="text-[#181818]/40 hover:text-[#181818] p-1 text-xs"
+              className="text-[#121212]/50 dark:text-[#F5F3EF]/50 hover:text-[#121212] dark:hover:text-white p-1 text-xs cursor-pointer"
             >
               Clear
             </button>
@@ -90,7 +90,7 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({
           <button
             onClick={onClose}
             aria-label="Close search"
-            className="p-1.5 text-[#181818] hover:opacity-70 transition-opacity cursor-pointer"
+            className="p-1.5 text-[#121212] dark:text-[#F5F3EF] hover:opacity-70 transition-opacity cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -100,7 +100,7 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({
         <div className="p-6 max-h-[70vh] overflow-y-auto space-y-6">
           {!trimmed ? (
             <div className="space-y-4">
-              <span className="text-[11px] uppercase tracking-widest text-[#181818]/50 font-semibold block">
+              <span className="text-[11px] uppercase tracking-widest text-[#121212]/50 dark:text-[#F5F3EF]/50 font-semibold block">
                 Suggested Searches
               </span>
               <div className="flex flex-wrap gap-2">
@@ -108,7 +108,7 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({
                   <button
                     key={sug}
                     onClick={() => setQuery(sug)}
-                    className="px-3 py-1.5 bg-white border border-[#D8D1C7] text-xs text-[#181818] hover:border-[#181818] transition-colors cursor-pointer"
+                    className="px-3 py-1.5 bg-white dark:bg-[#1A1A1A] border border-[#E5DFD5] dark:border-[#262626] text-xs text-[#121212] dark:text-[#F5F3EF] hover:border-[#121212] dark:hover:border-white transition-colors cursor-pointer"
                   >
                     {sug}
                   </button>
@@ -116,33 +116,30 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({
               </div>
 
               {/* Quick Featured Recommendations */}
-              <div className="pt-4 border-t border-[#E5DFD5]">
-                <span className="text-[11px] uppercase tracking-widest text-[#CDAA7D] font-semibold block mb-3">
-                  Current Atelier Highlights
+              <div className="pt-4 border-t border-[#E5DFD5] dark:border-[#262626]">
+                <span className="text-[11px] uppercase tracking-widest text-[#B89B6C] dark:text-[#D4AF37] font-semibold block mb-3">
+                  Atelier Pillars
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {PRODUCTS.slice(0, 2).map((prod) => (
+                  {PRODUCTS.slice(0, 4).map((p) => (
                     <div
-                      key={prod.id}
+                      key={p.id}
                       onClick={() => {
+                        onSelectProduct(p);
                         onClose();
-                        onSelectProduct(prod);
                       }}
-                      className="p-3 bg-white border border-[#E5DFD5] flex items-center gap-3 cursor-pointer hover:border-[#181818] transition-colors"
+                      className="p-2.5 bg-white dark:bg-[#161616] border border-[#E5DFD5] dark:border-[#262626] hover:border-[#121212] dark:hover:border-white transition-colors flex items-center gap-3 cursor-pointer"
                     >
                       <LuxuryImage
-                        src={prod.images[0]}
-                        alt={prod.name}
-                        fallbackText={prod.category}
-                        className="w-12 h-12 object-cover bg-[#F7F4EF]"
+                        src={p.images[0]}
+                        alt={p.name}
+                        fallbackText={p.type}
+                        className="w-12 h-12 object-cover bg-[#F5F1EB] dark:bg-[#1C1C1C]"
                       />
                       <div className="overflow-hidden">
-                        <div className="font-serif text-sm text-[#181818] truncate font-medium">
-                          {prod.name}
-                        </div>
-                        <div className="text-[11px] text-[#181818]/60 font-mono tabular-nums">
-                          ₹{prod.price.toLocaleString()}
-                        </div>
+                        <div className="font-serif text-xs font-medium text-[#121212] dark:text-[#F5F3EF] truncate">{p.name}</div>
+                        <div className="text-[10px] text-[#121212]/60 dark:text-[#F5F3EF]/60 truncate">{p.subtitle}</div>
+                        <div className="font-mono text-[11px] text-[#121212] dark:text-[#F5F3EF] mt-0.5">₹{p.price.toLocaleString()}</div>
                       </div>
                     </div>
                   ))}
@@ -151,105 +148,99 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({
             </div>
           ) : (
             <div className="space-y-6">
-              {/* Product Results */}
-              <div>
-                <div className="flex items-center justify-between text-xs text-[#181818]/60 uppercase tracking-wider font-semibold border-b border-[#E5DFD5] pb-2">
-                  <span>Creations ({matchingProducts.length})</span>
-                </div>
-                {matchingProducts.length > 0 ? (
-                  <div className="divide-y divide-[#E5DFD5] mt-2">
-                    {matchingProducts.map((prod) => (
+              {/* Product Matches */}
+              {matchingProducts.length > 0 && (
+                <div className="space-y-3">
+                  <span className="text-[11px] uppercase tracking-widest text-[#B89B6C] dark:text-[#D4AF37] font-semibold block">
+                    Formulations ({matchingProducts.length})
+                  </span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {matchingProducts.map((p) => (
                       <div
-                        key={prod.id}
+                        key={p.id}
                         onClick={() => {
+                          onSelectProduct(p);
                           onClose();
-                          onSelectProduct(prod);
                         }}
-                        className="py-3 flex items-center justify-between hover:bg-white/60 px-2 cursor-pointer transition-colors"
+                        className="p-3 bg-white dark:bg-[#161616] border border-[#E5DFD5] dark:border-[#262626] hover:border-[#121212] dark:hover:border-white transition-colors flex items-center justify-between cursor-pointer"
                       >
                         <div className="flex items-center gap-3">
                           <LuxuryImage
-                            src={prod.images[0]}
-                            alt={prod.name}
-                            fallbackText={prod.category}
-                            className="w-12 h-12 object-cover bg-[#F7F4EF] border border-[#E5DFD5]"
+                            src={p.images[0]}
+                            alt={p.name}
+                            fallbackText={p.type}
+                            className="w-12 h-12 object-cover bg-[#F5F1EB] dark:bg-[#1C1C1C]"
                           />
                           <div>
-                            <div className="font-serif text-sm font-medium text-[#181818]">
-                              {prod.name}
-                            </div>
-                            <div className="text-[11px] text-[#181818]/60">
-                              {prod.category} · {prod.subtitle}
-                            </div>
+                            <div className="font-serif text-xs font-medium text-[#121212] dark:text-[#F5F3EF]">{p.name}</div>
+                            <div className="text-[11px] text-[#121212]/60 dark:text-[#F5F3EF]/60">{p.type}</div>
+                            <div className="font-mono text-xs text-[#121212] dark:text-[#F5F3EF] mt-0.5">₹{p.price.toLocaleString()}</div>
                           </div>
                         </div>
-                        <div className="flex items-center gap-3">
-                          <span className="font-mono text-xs font-semibold tabular-nums text-[#181818]">
-                            ₹{prod.price.toLocaleString()}
-                          </span>
-                          <ArrowRight className="w-3.5 h-3.5 text-[#181818]/40" />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="text-xs text-[#181818]/50 py-3">
-                    No creations found matching &quot;{query}&quot;.
-                  </div>
-                )}
-              </div>
-
-              {/* Botanical Active Results */}
-              {matchingIngredients.length > 0 && (
-                <div>
-                  <div className="text-xs text-[#543544] uppercase tracking-wider font-semibold border-b border-[#E5DFD5] pb-2 flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-[#CDAA7D]" />
-                    <span>Active Botanical Science ({matchingIngredients.length})</span>
-                  </div>
-                  <div className="space-y-2 mt-2">
-                    {matchingIngredients.map((ing) => (
-                      <div key={ing.id} className="p-3 bg-white border border-[#E5DFD5] text-xs">
-                        <span className="font-semibold text-[#181818] block tracking-wide">
-                          {ing.name}
-                        </span>
-                        <p className="text-[#181818]/70 mt-1 leading-relaxed">
-                          {ing.description}
-                        </p>
+                        <ArrowRight className="w-3.5 h-3.5 text-[#121212]/40 dark:text-[#F5F3EF]/40" />
                       </div>
                     ))}
                   </div>
                 </div>
               )}
 
-              {/* Journal Essays */}
-              {matchingArticles.length > 0 && (
-                <div>
-                  <div className="text-xs text-[#181818]/60 uppercase tracking-wider font-semibold border-b border-[#E5DFD5] pb-2 flex items-center gap-1.5">
-                    <BookOpen className="w-3.5 h-3.5" />
-                    <span>Journal Stories ({matchingArticles.length})</span>
-                  </div>
-                  <div className="space-y-2 mt-2">
-                    {matchingArticles.map((article) => (
+              {/* Ingredient Matches */}
+              {matchingIngredients.length > 0 && (
+                <div className="space-y-3 pt-2 border-t border-[#E5DFD5] dark:border-[#262626]">
+                  <span className="text-[11px] uppercase tracking-widest text-[#B89B6C] dark:text-[#D4AF37] font-semibold block">
+                    Active Biomarkers ({matchingIngredients.length})
+                  </span>
+                  <div className="space-y-2">
+                    {matchingIngredients.map((i) => (
                       <div
-                        key={article.id}
-                        onClick={() => {
-                          onClose();
-                          onSelectArticle(article);
-                        }}
-                        className="p-3 bg-white border border-[#E5DFD5] hover:border-[#181818] cursor-pointer transition-colors"
+                        key={i.id}
+                        className="p-3 bg-white dark:bg-[#161616] border border-[#E5DFD5] dark:border-[#262626] text-xs space-y-1"
                       >
-                        <span className="text-[10px] text-[#CDAA7D] uppercase tracking-widest block font-medium">
-                          {article.category} · {article.readTime}
-                        </span>
-                        <h4 className="font-serif text-sm font-medium text-[#181818] mt-0.5">
-                          {article.title}
-                        </h4>
-                        <p className="text-xs text-[#181818]/70 line-clamp-1 mt-1 font-light">
-                          {article.excerpt}
-                        </p>
+                        <div className="flex justify-between font-medium">
+                          <span className="font-serif text-[#121212] dark:text-[#F5F3EF]">{i.name}</span>
+                          <span className="text-[10px] uppercase text-[#B89B6C] dark:text-[#D4AF37]">{i.role}</span>
+                        </div>
+                        <p className="text-[#121212]/70 dark:text-[#F5F3EF]/70 font-light">{i.description}</p>
                       </div>
                     ))}
                   </div>
+                </div>
+              )}
+
+              {/* Article Matches */}
+              {matchingArticles.length > 0 && (
+                <div className="space-y-3 pt-2 border-t border-[#E5DFD5] dark:border-[#262626]">
+                  <span className="text-[11px] uppercase tracking-widest text-[#B89B6C] dark:text-[#D4AF37] font-semibold block">
+                    Journal Essays ({matchingArticles.length})
+                  </span>
+                  <div className="space-y-2">
+                    {matchingArticles.map((a) => (
+                      <div
+                        key={a.id}
+                        onClick={() => {
+                          onSelectArticle(a);
+                          onClose();
+                        }}
+                        className="p-3 bg-white dark:bg-[#161616] border border-[#E5DFD5] dark:border-[#262626] hover:border-[#121212] dark:hover:border-white transition-colors cursor-pointer flex items-center justify-between"
+                      >
+                        <div className="space-y-0.5">
+                          <div className="text-[10px] uppercase tracking-wider text-[#B89B6C] dark:text-[#D4AF37] flex items-center gap-1">
+                            <BookOpen className="w-3 h-3" />
+                            <span>{a.category}</span>
+                          </div>
+                          <div className="font-serif text-xs font-medium text-[#121212] dark:text-[#F5F3EF]">{a.title}</div>
+                        </div>
+                        <ArrowRight className="w-3.5 h-3.5 text-[#121212]/40 dark:text-[#F5F3EF]/40" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {matchingProducts.length === 0 && matchingIngredients.length === 0 && matchingArticles.length === 0 && (
+                <div className="text-center py-8 space-y-2 text-xs text-[#121212]/60 dark:text-[#F5F3EF]/60">
+                  <p>No formulations or journal entries matched &ldquo;{query}&rdquo;.</p>
+                  <p className="text-[11px]">Try exploring by concern (e.g., &ldquo;Barrier&rdquo;) or category (&ldquo;Fragrance&rdquo;).</p>
                 </div>
               )}
             </div>

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Heart, Star, Plus } from 'lucide-react';
 import { Product, Shade } from '../../types';
-import { useWishlist } from '../../context/WishlistContext';
+import { Star, Heart, Plus } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
+import { useWishlist } from '../../context/WishlistContext';
 import { LuxuryImage } from '../ui/LuxuryImage';
 
 interface ProductCardProps {
@@ -16,8 +16,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   onSelect,
   onQuickView
 }) => {
-  const { isInWishlist, toggleWishlist } = useWishlist();
   const { addToCart } = useCart();
+  const { isInWishlist, toggleWishlist } = useWishlist();
   const [selectedShade, setSelectedShade] = useState<Shade | undefined>(
     product.shades ? product.shades[0] : undefined
   );
@@ -42,10 +42,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div
       onClick={() => onSelect(product)}
-      className="group cursor-pointer flex flex-col bg-white border border-[#D8D7CC] transition-all duration-300 hover:shadow-md hover:-translate-y-0.5"
+      className="group cursor-pointer flex flex-col bg-white dark:bg-[#141414] rounded-2xl sm:rounded-3xl border border-[#E5DFD5]/80 dark:border-[#262626] overflow-hidden transition-all duration-400 hover:shadow-xl hover:shadow-[#B89B6C]/10 hover:-translate-y-1"
     >
-      {/* Product Image Stage */}
-      <div className="relative aspect-4/3 sm:aspect-square overflow-hidden bg-[#E8E2D0]/50">
+      {/* Product Image Stage with Organic Curved Radius */}
+      <div className="relative aspect-4/3 sm:aspect-square overflow-hidden bg-[#F5F1EB] dark:bg-[#1C1C1C] rounded-t-2xl sm:rounded-t-3xl">
         <LuxuryImage
           src={primaryImage}
           alt={product.name}
@@ -55,7 +55,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
         {/* Minimal text badge (Max 1, no badge sandwich) */}
         {product.badge && (
-          <div className="absolute top-3 left-3 bg-[#2D3A1F] text-[#F4F1E8] text-[10px] tracking-widest uppercase px-2.5 py-1 font-medium">
+          <div className="absolute top-3 left-3 bg-[#121212]/90 backdrop-blur-xs text-white dark:bg-[#F5F3EF]/90 dark:text-[#121212] text-[10px] tracking-widest uppercase px-3 py-1 font-medium rounded-full shadow-2xs">
             {product.badge}
           </div>
         )}
@@ -67,30 +67,30 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             toggleWishlist(product.id);
           }}
           aria-label={isFavorited ? 'Remove from wishlist' : 'Save to wishlist'}
-          className="absolute top-3 right-3 p-2 bg-white/80 backdrop-blur-xs rounded-full text-[#2D3A1F] hover:bg-white transition-all shadow-xs"
+          className="absolute top-3 right-3 p-2 bg-white/85 dark:bg-[#1E1E1E]/85 backdrop-blur-xs rounded-full text-[#121212] dark:text-[#F5F3EF] hover:bg-white dark:hover:bg-[#252525] transition-all shadow-xs"
         >
           <Heart
             className={`w-3.5 h-3.5 transition-colors ${
-              isFavorited ? 'fill-[#B8A678] text-[#B8A678]' : 'text-[#2D3A1F]'
+              isFavorited ? 'fill-[#B89B6C] text-[#B89B6C] dark:fill-[#D4AF37] dark:text-[#D4AF37]' : 'text-[#121212] dark:text-[#F5F3EF]'
             }`}
           />
         </button>
 
-        {/* Hover Action Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/50 via-black/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-between gap-2">
+        {/* Hover Action Overlay with Rounded Controls */}
+        <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-between gap-2">
           <button
             onClick={(e) => {
               e.stopPropagation();
               onQuickView(product);
             }}
-            className="flex-1 bg-[#F4F1E8] hover:bg-white text-[#2D3A1F] text-xs py-2 px-3 tracking-wider uppercase font-medium transition-colors text-center"
+            className="flex-1 bg-white hover:bg-[#F5F1EB] dark:bg-[#222222] dark:hover:bg-[#2A2A2A] text-[#121212] dark:text-[#F5F3EF] text-xs py-2 px-4 rounded-full tracking-wider uppercase font-medium transition-colors text-center cursor-pointer shadow-sm"
           >
             Quick View
           </button>
           <button
             onClick={handleQuickAdd}
             aria-label="Quick add to bag"
-            className="bg-[#2D3A1F] hover:bg-[#1E2714] text-[#F4F1E8] p-2 transition-colors flex items-center justify-center shrink-0"
+            className="bg-[#121212] hover:bg-black dark:bg-[#F5F3EF] dark:hover:bg-white text-white dark:text-[#121212] w-8 h-8 rounded-full transition-colors flex items-center justify-center shrink-0 cursor-pointer shadow-sm"
           >
             <Plus className="w-4 h-4" />
           </button>
@@ -101,19 +101,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between space-y-3">
         <div className="space-y-1.5">
           {/* Unboxed Metadata: category and type */}
-          <div className="flex items-center gap-1.5 text-[11px] tracking-widest uppercase text-[#2D3A1F]/60">
+          <div className="flex items-center gap-1.5 text-[11px] tracking-widest uppercase text-[#121212]/60 dark:text-[#F5F3EF]/60">
             <span>{product.category}</span>
             <span aria-hidden="true">·</span>
             <span>{product.type}</span>
           </div>
 
           {/* Product Name */}
-          <h3 className="font-serif text-lg text-[#2D3A1F] group-hover:text-[#B8A678] transition-colors leading-snug">
+          <h3 className="font-serif text-lg text-[#121212] dark:text-[#F5F3EF] group-hover:text-[#B89B6C] dark:group-hover:text-[#D4AF37] transition-colors leading-snug">
             {product.name}
           </h3>
 
           {/* Benefit Kicker */}
-          <p className="text-xs text-[#2D3A1F]/75 line-clamp-2 leading-relaxed">
+          <p className="text-xs text-[#121212]/75 dark:text-[#F5F3EF]/75 line-clamp-2 leading-relaxed">
             {product.benefit}
           </p>
         </div>
@@ -129,14 +129,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                   aria-label={`Select shade ${shade.name}`}
                   className={`w-3.5 h-3.5 rounded-full border transition-all ${
                     selectedShade?.id === shade.id
-                      ? 'border-[#2D3A1F] scale-120'
-                      : 'border-black/20 hover:scale-110'
+                      ? 'border-[#121212] dark:border-white scale-120'
+                      : 'border-black/20 dark:border-white/20 hover:scale-110'
                   }`}
                   style={{ backgroundColor: shade.hex }}
                   title={`${shade.name} (${shade.undertone})`}
                 />
               ))}
-              <span className="text-[10px] text-[#2D3A1F]/60 ml-1">
+              <span className="text-[10px] text-[#121212]/60 dark:text-[#F5F3EF]/60 ml-1">
                 {product.shades.length} shades
               </span>
             </div>
@@ -144,22 +144,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         )}
 
         {/* Price & Rating Bar */}
-        <div className="pt-2 border-t border-[#D8D7CC] flex items-center justify-between">
+        <div className="pt-2 border-t border-[#E5DFD5]/80 dark:border-[#262626] flex items-center justify-between">
           <div className="flex items-baseline gap-2">
-            <span className="font-mono text-sm font-semibold tabular-nums text-[#2D3A1F]">
+            <span className="font-mono text-sm font-semibold tabular-nums text-[#121212] dark:text-[#F5F3EF]">
               ₹{product.price.toLocaleString()}
             </span>
             {product.originalPrice && (
-              <span className="font-mono text-xs text-[#2D3A1F]/40 line-through tabular-nums">
+              <span className="font-mono text-xs text-[#121212]/40 dark:text-[#F5F3EF]/40 line-through tabular-nums">
                 ₹{product.originalPrice.toLocaleString()}
               </span>
             )}
           </div>
 
-          <div className="flex items-center text-xs text-[#2D3A1F]/70 gap-1">
-            <Star className="w-3.5 h-3.5 fill-[#B8A678] text-[#B8A678]" />
-            <span className="font-mono tabular-nums text-[11px] font-medium text-[#2D3A1F]">{product.rating}</span>
-            <span className="text-[10px] text-[#2D3A1F]/40">({product.reviewCount})</span>
+          <div className="flex items-center text-xs text-[#121212]/70 dark:text-[#F5F3EF]/70 gap-1">
+            <Star className="w-3.5 h-3.5 fill-[#B89B6C] text-[#B89B6C] dark:fill-[#D4AF37] dark:text-[#D4AF37]" />
+            <span className="font-mono tabular-nums text-[11px] font-medium text-[#121212] dark:text-[#F5F3EF]">{product.rating}</span>
+            <span className="text-[10px] text-[#121212]/40 dark:text-[#F5F3EF]/40">({product.reviewCount})</span>
           </div>
         </div>
 
@@ -167,10 +167,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div className="sm:hidden pt-2">
           <button
             onClick={handleQuickAdd}
-            className={`w-full py-2 text-xs uppercase tracking-wider font-medium transition-colors ${
+            className={`w-full py-2.5 rounded-full text-xs uppercase tracking-wider font-medium transition-colors ${
               isAddedFeedback
-                ? 'bg-[#B8A678] text-[#2D3A1F]'
-                : 'bg-[#2D3A1F] text-[#F4F1E8] hover:bg-[#1E2714]'
+                ? 'bg-[#B89B6C] dark:bg-[#D4AF37] text-[#121212]'
+                : 'bg-[#121212] text-white dark:bg-[#F5F3EF] dark:text-[#121212] hover:bg-black dark:hover:bg-white'
             }`}
           >
             {isAddedFeedback ? 'Added to Bag' : 'Quick Add'}

@@ -1,58 +1,73 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-serif: "Fraunces", Georgia, serif;
   --font-sans: "Sora", system-ui, -apple-system, sans-serif;
-  
-  /* Fraunces & Sora Brand Kit Palette */
-  --color-kit-bg: #F4F1E8;
-  --color-kit-text: #2D3A1F;
-  --color-kit-primary: #2D3A1F;
-  --color-kit-accent: #B8A678;
-  --color-kit-surface: #E8E2D0;
-  --color-kit-border: #D8D7CC;
-
-  /* System Color mappings */
-  --color-ivory: #F4F1E8;
-  --color-charcoal: #2D3A1F;
-  --color-sand: #E8E2D0;
-  --color-plum: #2D3A1F;
-  --color-sage: #B8A678;
-  --color-terracotta: #B8A678;
-  --color-warm-border: #D8D7CC;
-  --color-night: #2D3A1F;
-  --color-gold: #B8A678;
 }
 
 :root {
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Sora", sans-serif;
+  color-scheme: light dark;
+}
+
+/* Light Theme Variables */
+:root, .light {
+  --bg-primary: #FAF8F5;
+  --bg-surface: #FFFFFF;
+  --bg-elevated: #F3EFEA;
+  --bg-subtle: #EBE5DC;
+  --text-primary: #121212;
+  --text-secondary: #524E49;
+  --text-muted: #827C75;
+  --border-primary: #E5DFD5;
+  --border-subtle: #EFEAE3;
+  --accent-gold: #B89B6C;
+  --accent-hover: #A08356;
+}
+
+/* Dark Theme Variables */
+.dark {
+  --bg-primary: #0C0C0C;
+  --bg-surface: #141414;
+  --bg-elevated: #1B1B1B;
+  --bg-subtle: #242424;
+  --text-primary: #F5F3EF;
+  --text-secondary: #A8A29A;
+  --text-muted: #736E67;
+  --border-primary: #262626;
+  --border-subtle: #1C1C1C;
+  --accent-gold: #D4AF37;
+  --accent-hover: #E2C265;
 }
 
 body {
   font-family: "Sora", sans-serif;
-  background-color: #F4F1E8;
-  color: #2D3A1F;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 h1, h2, h3, h4, .font-serif {
   font-family: "Fraunces", Georgia, serif;
 }
 
-/* Custom subtle scrollbars styled after Fraunces & Sora kit */
+/* Custom subtle scrollbars styled to adapt to theme */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F4F1E8;
+  background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: #D8D7CC;
+  background: var(--border-primary);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B8A678;
+  background: var(--accent-gold);
 }

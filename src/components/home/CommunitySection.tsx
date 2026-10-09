@@ -1,7 +1,7 @@
 import React from 'react';
 import { Product } from '../../types';
 import { PRODUCTS, MORNING_RITUAL_IMAGE, HERO_IMAGE, NOIR_FRAGRANCE_IMAGE, SKIN_TINT_IMAGE } from '../../data/products';
-import { Plus, ArrowRight } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { LuxuryImage } from '../ui/LuxuryImage';
 
@@ -59,65 +59,65 @@ export const CommunitySection: React.FC<CommunitySectionProps> = ({ onSelectProd
   };
 
   return (
-    <section className="bg-[#FAF8F5] py-16 sm:py-24 border-b border-[#E5DFD5]">
+    <section className="bg-[#FAF8F5] dark:bg-[#0C0C0C] py-16 sm:py-24 border-b border-[#E5DFD5] dark:border-[#222222] transition-colors duration-200">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 space-y-12">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#E5DFD5] pb-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#E5DFD5] dark:border-[#222222] pb-6">
           <div className="space-y-2">
-            <span className="text-xs uppercase tracking-[0.25em] text-[#543544] font-semibold">
+            <span className="text-xs uppercase tracking-[0.25em] text-[#B89B6C] dark:text-[#D4AF37] font-semibold">
               The AUREN Community
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#181818] font-normal">
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#121212] dark:text-[#F5F3EF] font-normal">
               Real Rituals, Real Skin
             </h2>
           </div>
-          <p className="text-xs sm:text-sm text-[#181818]/70 max-w-md font-light leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#121212]/70 dark:text-[#F5F3EF]/70 max-w-md font-light leading-relaxed">
             See how living expressions integrate our formulas across diverse skin conditions, humidities, and personal styles.
           </p>
         </div>
 
-        {/* 4 Community Cards */}
+        {/* 4 Community Cards with Rounded Curves */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {communityStories.map((story) => (
             <div
               key={story.id}
               onClick={() => onSelectProduct(story.product)}
-              className="bg-white border border-[#E5DFD5] flex flex-col justify-between overflow-hidden group cursor-pointer hover:border-[#181818] transition-all shadow-xs"
+              className="bg-white dark:bg-[#141414] rounded-2xl sm:rounded-3xl border border-[#E5DFD5]/80 dark:border-[#262626] flex flex-col justify-between overflow-hidden group cursor-pointer hover:border-[#B89B6C]/60 dark:hover:border-[#D4AF37]/50 hover:shadow-xl hover:shadow-[#B89B6C]/8 transition-all duration-300 shadow-2xs"
             >
               {/* Photo */}
-              <div className="aspect-4/3 relative overflow-hidden bg-[#E8DFD3]">
+              <div className="aspect-4/3 relative overflow-hidden bg-[#E8DFD3] dark:bg-[#1C1C1C] rounded-t-2xl sm:rounded-t-3xl">
                 <LuxuryImage
                   src={story.image}
                   alt={story.name}
                   fallbackText={story.skinType}
                   className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
                 />
-                <div className="absolute bottom-2 left-2 bg-black/70 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 tracking-wider">
+                <div className="absolute bottom-2.5 left-2.5 bg-black/75 backdrop-blur-xs text-white text-[10px] px-2.5 py-0.5 rounded-full tracking-wider">
                   {story.skinType}
                 </div>
               </div>
 
               {/* Quote & details */}
               <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                <p className="text-xs text-[#181818]/80 font-light italic leading-relaxed">
+                <p className="text-xs text-[#121212]/80 dark:text-[#F5F3EF]/80 font-light italic leading-relaxed">
                   &ldquo;{story.quote}&rdquo;
                 </p>
 
-                <div className="space-y-3 pt-3 border-t border-[#E5DFD5]">
+                <div className="space-y-3 pt-3 border-t border-[#E5DFD5]/80 dark:border-[#262626]">
                   <div>
-                    <div className="text-xs font-semibold text-[#181818]">{story.name}</div>
-                    <div className="text-[10px] text-[#181818]/50 uppercase tracking-widest">{story.location}</div>
+                    <div className="text-xs font-semibold text-[#121212] dark:text-[#F5F3EF]">{story.name}</div>
+                    <div className="text-[10px] text-[#121212]/50 dark:text-[#F5F3EF]/50 uppercase tracking-widest">{story.location}</div>
                   </div>
 
                   {/* Attached Product Box */}
-                  <div className="bg-[#F7F4EF] p-2.5 flex items-center justify-between border border-[#E5DFD5]/60">
+                  <div className="bg-[#FAF8F5] dark:bg-[#1C1C1C] rounded-xl p-2.5 flex items-center justify-between border border-[#E5DFD5]/80 dark:border-[#262626]">
                     <div className="space-y-0.5 max-w-[70%]">
-                      <div className="text-[10px] uppercase tracking-wider text-[#543544] font-medium">Ritual Key:</div>
-                      <div className="font-serif text-xs text-[#181818] truncate font-medium">{story.product.name}</div>
+                      <div className="text-[10px] uppercase tracking-wider text-[#B89B6C] dark:text-[#D4AF37] font-medium">Ritual Key:</div>
+                      <div className="font-serif text-xs text-[#121212] dark:text-[#F5F3EF] truncate font-medium">{story.product.name}</div>
                     </div>
                     <button
                       onClick={(e) => handleQuickAdd(story.product, e)}
                       aria-label={`Quick add ${story.product.name}`}
-                      className="bg-[#181818] hover:bg-black text-white p-1.5 transition-colors cursor-pointer"
+                      className="bg-[#121212] hover:bg-black dark:bg-[#F5F3EF] dark:hover:bg-white text-white dark:text-[#121212] w-7 h-7 rounded-full flex items-center justify-center transition-colors cursor-pointer shadow-2xs"
                     >
                       <Plus className="w-3.5 h-3.5" />
                     </button>

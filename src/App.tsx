@@ -20,6 +20,10 @@ import { RitualsPage } from './pages/RitualsPage';
 import { JournalPage } from './pages/JournalPage';
 import { WishlistPage } from './pages/WishlistPage';
 import { TheHousePage } from './pages/TheHousePage';
+import { MotionStoryPage } from './pages/MotionStoryPage';
+import { CartPage } from './pages/CartPage';
+import { CheckoutPage } from './pages/CheckoutPage';
+import { ThemeProvider } from './context/ThemeContext';
 import { Product, Ritual, Article } from './types';
 import { PRODUCTS } from './data/products';
 
@@ -64,11 +68,12 @@ export default function App() {
   };
 
   return (
-    <CartProvider>
-      <WishlistProvider>
-        <div className="min-h-screen flex flex-col bg-[#F4F1E8] text-[#2D3A1F] selection:bg-[#2D3A1F] selection:text-[#F4F1E8]">
-          {/* 1. Global Announcement */}
-          <AnnouncementBar />
+    <ThemeProvider>
+      <CartProvider>
+        <WishlistProvider>
+          <div className="min-h-screen flex flex-col bg-[#FAF8F5] dark:bg-[#0C0C0C] text-[#121212] dark:text-[#F5F3EF] selection:bg-[#121212] selection:text-white dark:selection:bg-[#F5F3EF] dark:selection:text-[#0C0C0C] transition-colors duration-200">
+            {/* 1. Global Announcement */}
+            <AnnouncementBar />
 
           {/* 2. Top Navigation Bar */}
           <Header
@@ -130,6 +135,28 @@ export default function App() {
                 onExploreRituals={() => handleNavigate('rituals')}
               />
             )}
+
+            {currentPage === 'story' && (
+              <MotionStoryPage
+                onNavigate={handleNavigate}
+                onSelectProduct={handleSelectProduct}
+              />
+            )}
+
+            {currentPage === 'cart' && (
+              <CartPage
+                onNavigate={handleNavigate}
+                onSelectProduct={handleSelectProduct}
+              />
+            )}
+
+            {currentPage === 'checkout' && (
+              <CheckoutPage
+                onNavigate={handleNavigate}
+                onSelectProduct={handleSelectProduct}
+                onSuccessReturn={() => handleNavigate('home')}
+              />
+            )}
           </main>
 
           {/* 4. Global Footer */}
@@ -158,5 +185,6 @@ export default function App() {
         </div>
       </WishlistProvider>
     </CartProvider>
+    </ThemeProvider>
   );
 }
