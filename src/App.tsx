@@ -72,7 +72,7 @@ export default function App() {
     <ThemeProvider>
       <CartProvider>
         <WishlistProvider>
-          <div className="min-h-screen flex flex-col bg-[#FAF8F5] dark:bg-[#0C0C0C] text-[#121212] dark:text-[#F5F3EF] selection:bg-[#121212] selection:text-white dark:selection:bg-[#F5F3EF] dark:selection:text-[#0C0C0C] transition-colors duration-200">
+          <div className="min-h-screen flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)] selection:bg-[var(--text-primary)] selection:text-[var(--bg-primary)] transition-colors duration-300">
             {/* 1. Global Announcement */}
             <AnnouncementBar />
 

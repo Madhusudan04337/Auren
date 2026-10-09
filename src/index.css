@@ -1,50 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-serif: "Fraunces", Georgia, serif;
-  --font-sans: "Sora", system-ui, -apple-system, sans-serif;
+  --font-serif: "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
 }
 
 :root {
-  --font-display: "Fraunces", Georgia, serif;
-  --font-body: "Sora", sans-serif;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
   color-scheme: light dark;
 }
 
-/* Light Theme Variables */
 :root, .light {
-  --bg-primary: #FAF8F5;
-  --bg-surface: #FFFFFF;
-  --bg-elevated: #F3EFEA;
-  --bg-subtle: #EBE5DC;
-  --text-primary: #121212;
-  --text-secondary: #524E49;
-  --text-muted: #827C75;
-  --border-primary: #E5DFD5;
-  --border-subtle: #EFEAE3;
-  --accent-gold: #B89B6C;
-  --accent-hover: #A08356;
+  --bg-primary: #f5f7f4;
+  --bg-surface: #ffffff;
+  --bg-elevated: #e9eee9;
+  --bg-subtle: #dfe8e1;
+  --text-primary: #16211b;
+  --text-secondary: #536258;
+  --text-muted: #7b897f;
+  --border-primary: #d7e1d9;
+  --border-subtle: #e8eee9;
+  --accent-gold: #c47d52;
+  --accent-hover: #a9633d;
 }
 
-/* Dark Theme Variables */
 .dark {
-  --bg-primary: #0C0C0C;
-  --bg-surface: #141414;
-  --bg-elevated: #1B1B1B;
-  --bg-subtle: #242424;
-  --text-primary: #F5F3EF;
-  --text-secondary: #A8A29A;
-  --text-muted: #736E67;
-  --border-primary: #262626;
-  --border-subtle: #1C1C1C;
-  --accent-gold: #D4AF37;
-  --accent-hover: #E2C265;
+  --bg-primary: #0e1511;
+  --bg-surface: #142019;
+  --bg-elevated: #1b2b21;
+  --bg-subtle: #24372a;
+  --text-primary: #f2f7f1;
+  --text-secondary: #b1c0b3;
+  --text-muted: #819487;
+  --border-primary: #2b4031;
+  --border-subtle: #1c2b20;
+  --accent-gold: #e09a6b;
+  --accent-hover: #f0b287;
 }
 
 body {
-  font-family: "Sora", sans-serif;
+  font-family: var(--font-body);
   background-color: var(--bg-primary);
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
@@ -53,8 +52,11 @@ body {
 }
 
 h1, h2, h3, h4, .font-serif {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: var(--font-display);
+  letter-spacing: -0.035em;
 }
+
+button, a { transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
 
 /* Custom subtle scrollbars styled to adapt to theme */
 ::-webkit-scrollbar {
