@@ -22,12 +22,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     product.shades ? product.shades[0] : undefined
   );
   const [isAddedFeedback, setIsAddedFeedback] = useState(false);
+  const [isWaitlistFeedback, setIsWaitlistFeedback] = useState(false);
 
   const isFavorited = isInWishlist(product.id);
   const primaryImage = product.images[0];
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.stopPropagation();
+    if (!product.inStock) {
+      handleWaitlist(e);
+      return;
+    }
     // If it has multiple sizes or multiple shades, open quick view for bespoke selection
     if (product.shades && product.shades.length > 1) {
       onQuickView(product);
@@ -37,6 +42,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     addToCart(product, defaultSize, selectedShade, 1);
     setIsAddedFeedback(true);
     setTimeout(() => setIsAddedFeedback(false), 1500);
+  };
+
+  const handleWaitlist = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsWaitlistFeedback(true);
+    setTimeout(() => setIsWaitlistFeedback(false), 2000);
   };
 
   return (
@@ -50,13 +61,29 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           src={primaryImage}
           alt={product.name}
           fallbackText={product.type}
-          className="w-full h-full object-cover object-center transition-all duration-500"
+          className={`w-full h-full object-cover object-center transition-all duration-500 ${
+            !product.inStock ? 'opacity-85 grayscale-[0.25] group-hover:grayscale-0' : ''
+          }`}
         />
 
-        {/* Minimal text badge (Max 1, no badge sandwich) */}
-        {product.badge && (
+        {/* Out of Stock / Sold Out Badge or Status Badge */}
+        {!product.inStock ? (
+          <div className="absolute top-3 left-3 bg-[#121212]/95 dark:bg-black/95 text-white border border-white/20 text-[10px] tracking-[0.2em] uppercase px-3 py-1 font-semibold rounded-full backdrop-blur-md shadow-md z-10 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#B89B6C] dark:bg-[#D4AF37]" />
+            <span>{product.badge === 'Waitlist' ? 'Waitlist' : 'Sold Out'}</span>
+          </div>
+        ) : product.badge ? (
           <div className="absolute top-3 left-3 bg-[#121212]/90 backdrop-blur-xs text-white dark:bg-[#F5F3EF]/90 dark:text-[#121212] text-[10px] tracking-widest uppercase px-3 py-1 font-medium rounded-full shadow-2xs">
             {product.badge}
+          </div>
+        ) : null}
+
+        {/* Center overlay for Out of Stock items */}
+        {!product.inStock && (
+          <div className="absolute inset-0 bg-black/20 backdrop-blur-[0.5px] pointer-events-none flex items-center justify-center">
+            <span className="bg-[#121212]/85 text-white/90 border border-white/15 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] px-3.5 py-1.5 rounded-full font-medium shadow-md">
+              Restocking Soon
+            </span>
           </div>
         )}
 
@@ -67,7 +94,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             toggleWishlist(product.id);
           }}
           aria-label={isFavorited ? 'Remove from wishlist' : 'Save to wishlist'}
-          className="absolute top-3 right-3 p-2 bg-white/85 dark:bg-[#1E1E1E]/85 backdrop-blur-xs rounded-full text-[#121212] dark:text-[#F5F3EF] hover:bg-white dark:hover:bg-[#252525] transition-all shadow-xs"
+          className="absolute top-3 right-3 p-2 bg-white/85 dark:bg-[#1E1E1E]/85 backdrop-blur-xs rounded-full text-[#121212] dark:text-[#F5F3EF] hover:bg-white dark:hover:bg-[#252525] transition-all shadow-xs z-10"
         >
           <Heart
             className={`w-3.5 h-3.5 transition-colors ${
@@ -76,24 +103,35 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           />
         </button>
 
-        {/* Hover Action Overlay with Rounded Controls */}
-        <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-between gap-2">
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onQuickView(product);
-            }}
-            className="flex-1 bg-white hover:bg-[#F5F1EB] dark:bg-[#222222] dark:hover:bg-[#2A2A2A] text-[#121212] dark:text-[#F5F3EF] text-xs py-2 px-4 rounded-full tracking-wider uppercase font-medium transition-colors text-center cursor-pointer shadow-sm"
-          >
-            Quick View
-          </button>
-          <button
-            onClick={handleQuickAdd}
-            aria-label="Quick add to bag"
-            className="bg-[#121212] hover:bg-black dark:bg-[#F5F3EF] dark:hover:bg-white text-white dark:text-[#121212] w-8 h-8 rounded-full transition-colors flex items-center justify-center shrink-0 cursor-pointer shadow-sm"
-          >
-            <Plus className="w-4 h-4" />
-          </button>
+        {/* Hover Action Overlay */}
+        <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-between gap-2 z-10">
+          {!product.inStock ? (
+            <button
+              onClick={handleWaitlist}
+              className="w-full bg-[#121212] hover:bg-black text-[#F5F3EF] text-xs py-2 px-4 rounded-full tracking-wider uppercase font-medium transition-colors text-center cursor-pointer border border-white/20 shadow-sm"
+            >
+              {isWaitlistFeedback ? 'Waitlist Joined ✓' : 'Notify When Available'}
+            </button>
+          ) : (
+            <>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onQuickView(product);
+                }}
+                className="flex-1 bg-white hover:bg-[#F5F1EB] dark:bg-[#222222] dark:hover:bg-[#2A2A2A] text-[#121212] dark:text-[#F5F3EF] text-xs py-2 px-4 rounded-full tracking-wider uppercase font-medium transition-colors text-center cursor-pointer shadow-sm"
+              >
+                Quick View
+              </button>
+              <button
+                onClick={handleQuickAdd}
+                aria-label="Quick add to bag"
+                className="bg-[#121212] hover:bg-black dark:bg-[#F5F3EF] dark:hover:bg-white text-white dark:text-[#121212] w-8 h-8 rounded-full transition-colors flex items-center justify-center shrink-0 cursor-pointer shadow-sm"
+              >
+                <Plus className="w-4 h-4" />
+              </button>
+            </>
+          )}
         </div>
       </div>
 
@@ -163,18 +201,31 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </div>
         </div>
 
-        {/* Quick Add Button on Mobile */}
+        {/* Quick Add or Waitlist Button on Mobile */}
         <div className="sm:hidden pt-2">
-          <button
-            onClick={handleQuickAdd}
-            className={`w-full py-2.5 rounded-full text-xs uppercase tracking-wider font-medium transition-colors ${
-              isAddedFeedback
-                ? 'bg-[#B89B6C] dark:bg-[#D4AF37] text-[#121212]'
-                : 'bg-[#121212] text-white dark:bg-[#F5F3EF] dark:text-[#121212] hover:bg-black dark:hover:bg-white'
-            }`}
-          >
-            {isAddedFeedback ? 'Added to Bag' : 'Quick Add'}
-          </button>
+          {!product.inStock ? (
+            <button
+              onClick={handleWaitlist}
+              className={`w-full py-2.5 rounded-full text-xs uppercase tracking-wider font-medium transition-all ${
+                isWaitlistFeedback
+                  ? 'bg-[#B89B6C] dark:bg-[#D4AF37] text-[#121212]'
+                  : 'bg-black/5 dark:bg-white/10 text-[#121212] dark:text-[#F5F3EF] border border-black/10 dark:border-white/15'
+              }`}
+            >
+              {isWaitlistFeedback ? 'Waitlist Joined ✓' : 'Sold Out · Join Waitlist'}
+            </button>
+          ) : (
+            <button
+              onClick={handleQuickAdd}
+              className={`w-full py-2.5 rounded-full text-xs uppercase tracking-wider font-medium transition-colors ${
+                isAddedFeedback
+                  ? 'bg-[#B89B6C] dark:bg-[#D4AF37] text-[#121212]'
+                  : 'bg-[#121212] text-white dark:bg-[#F5F3EF] dark:text-[#121212] hover:bg-black dark:hover:bg-white'
+              }`}
+            >
+              {isAddedFeedback ? 'Added to Bag' : 'Quick Add'}
+            </button>
+          )}
         </div>
       </div>
     </div>

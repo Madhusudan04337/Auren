@@ -239,7 +239,7 @@ export const PRODUCTS: Product[] = [
     price: 3450,
     rating: 4.7,
     reviewCount: 142,
-    badge: 'New',
+    badge: 'Sold Out',
     benefit: 'Crisp, solar vitality inspired by Mediterranean morning cliff breezes and citrus blossoms',
     description: 'An effervescent study in light. Solaris opens with sparkling Italian mandarin and crushed fig leaves, blossoming into bitter orange neroli and a mineral sea salt breeze on sun-warmed driftwood.',
     concerns: ['Freshness', 'Daywear', 'Uplifting'],
@@ -271,7 +271,7 @@ export const PRODUCTS: Product[] = [
       'Spritz generously over hair, neck, and clothing.',
       'Ideal for daytime clarity and revitalizing afternoon resets.'
     ],
-    inStock: true
+    inStock: false
   },
   {
     id: 'auren-07',
@@ -284,7 +284,7 @@ export const PRODUCTS: Product[] = [
     price: 2450,
     rating: 4.9,
     reviewCount: 295,
-    badge: 'Award Winner',
+    badge: 'Waitlist',
     benefit: 'Wake up to cushion-plump elasticity, reduced fatigue lines, and refined skin texture',
     description: 'A chronobiological night balm that works in tandem with the circadian rhythm of skin repair. Quad-peptide complexes stimulate collagen synthesis while encapsulated bakuchiol smooths texture without irritation.',
     concerns: ['Aging', 'Firmness', 'Fatigue', 'Dullness'],
@@ -308,7 +308,7 @@ export const PRODUCTS: Product[] = [
       'Allow 5 minutes to absorb before sleeping.',
       'Rinse with warm water in the morning to reveal cushion-plump skin.'
     ],
-    inStock: true
+    inStock: false
   },
   {
     id: 'auren-08',

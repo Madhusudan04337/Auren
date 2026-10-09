@@ -125,13 +125,20 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 src={product.images[activeImageIndex] || product.images[0]}
                 alt={product.name}
                 fallbackText={product.type}
-                className="w-full h-full object-cover transition-all duration-500"
+                className={`w-full h-full object-cover transition-all duration-500 ${
+                  !product.inStock ? 'opacity-90 grayscale-[0.2]' : ''
+                }`}
               />
-              {product.badge && (
+              {!product.inStock ? (
+                <div className="absolute top-4 left-4 bg-[#121212]/95 dark:bg-black/95 text-white border border-white/20 text-[10px] tracking-widest uppercase px-3.5 py-1.5 font-semibold flex items-center gap-1.5 shadow-md">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#B89B6C] dark:bg-[#D4AF37]" />
+                  <span>Sold Out</span>
+                </div>
+              ) : product.badge ? (
                 <div className="absolute top-4 left-4 bg-[#121212] text-white dark:bg-[#F5F3EF] dark:text-[#0C0C0C] text-[10px] tracking-widest uppercase px-3 py-1 font-medium">
                   {product.badge}
                 </div>
-              )}
+              ) : null}
             </div>
 
             {/* Thumbnail switcher */}
@@ -259,23 +266,46 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 </div>
 
                 {/* Primary CTA */}
-                <button
-                  onClick={handleAddToCart}
-                  className={`flex-1 py-3.5 text-xs uppercase tracking-[0.2em] font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs ${
-                    addedSuccess
-                      ? 'bg-[#B89B6C] dark:bg-[#D4AF37] text-white dark:text-[#121212]'
-                      : 'bg-[#121212] text-white hover:bg-black dark:bg-[#F5F3EF] dark:text-[#121212] dark:hover:bg-white'
-                  }`}
-                >
-                  {addedSuccess ? (
-                    <>
-                      <Check className="w-4 h-4" />
-                      <span>Added to Shopping Bag</span>
-                    </>
-                  ) : (
-                    <span>Add to Bag · ₹{(currentPrice * quantity).toLocaleString()}</span>
-                  )}
-                </button>
+                {!product.inStock ? (
+                  <button
+                    onClick={() => {
+                      setAddedSuccess(true);
+                      setTimeout(() => setAddedSuccess(false), 2500);
+                    }}
+                    className={`flex-1 py-3.5 text-xs uppercase tracking-[0.2em] font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs ${
+                      addedSuccess
+                        ? 'bg-[#B89B6C] dark:bg-[#D4AF37] text-white dark:text-[#121212]'
+                        : 'bg-[#121212] text-white hover:bg-black dark:bg-[#F5F3EF] dark:text-[#121212] dark:hover:bg-white'
+                    }`}
+                  >
+                    {addedSuccess ? (
+                      <>
+                        <Check className="w-4 h-4" />
+                        <span>Waitlist Notification Saved ✓</span>
+                      </>
+                    ) : (
+                      <span>Sold Out · Join Restock Waitlist</span>
+                    )}
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleAddToCart}
+                    className={`flex-1 py-3.5 text-xs uppercase tracking-[0.2em] font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs ${
+                      addedSuccess
+                        ? 'bg-[#B89B6C] dark:bg-[#D4AF37] text-white dark:text-[#121212]'
+                        : 'bg-[#121212] text-white hover:bg-black dark:bg-[#F5F3EF] dark:text-[#121212] dark:hover:bg-white'
+                    }`}
+                  >
+                    {addedSuccess ? (
+                      <>
+                        <Check className="w-4 h-4" />
+                        <span>Added to Shopping Bag</span>
+                      </>
+                    ) : (
+                      <span>Add to Bag · ₹{(currentPrice * quantity).toLocaleString()}</span>
+                    )}
+                  </button>
+                )}
 
                 {/* Wishlist */}
                 <button

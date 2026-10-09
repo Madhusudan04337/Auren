@@ -42,7 +42,7 @@ export interface Product {
   originalPrice?: number;
   rating: number;
   reviewCount: number;
-  badge?: 'Bestseller' | 'New' | 'Haute Exclusive' | 'Award Winner' | 'Limited Edition';
+  badge?: 'Bestseller' | 'New' | 'Haute Exclusive' | 'Award Winner' | 'Limited Edition' | 'Sold Out' | 'Waitlist';
   benefit: string;
   description: string;
   concerns: string[];

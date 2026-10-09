@@ -18,6 +18,7 @@ export const ShopPage: React.FC<ShopPageProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
   const [selectedConcern, setSelectedConcern] = useState<string>('All');
   const [selectedAudience, setSelectedAudience] = useState<string>('All');
+  const [stockFilter, setStockFilter] = useState<'All' | 'InStock' | 'OutOfStock'>('All');
   const [sortBy, setSortBy] = useState<string>('featured');
   const [maxPrice, setMaxPrice] = useState<number>(6000);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
@@ -46,6 +47,13 @@ export const ShopPage: React.FC<ShopPageProps> = ({
           return false;
         }
       }
+      // Stock filter
+      if (stockFilter === 'InStock' && !product.inStock) {
+        return false;
+      }
+      if (stockFilter === 'OutOfStock' && product.inStock) {
+        return false;
+      }
       // Price filter
       if (product.price > maxPrice) {
         return false;
@@ -58,14 +66,15 @@ export const ShopPage: React.FC<ShopPageProps> = ({
       if (sortBy === 'bestsellers') return b.reviewCount - a.reviewCount;
       return 0; // featured retains atelier curated order
     });
-  }, [selectedCategory, selectedConcern, selectedAudience, sortBy, maxPrice]);
+  }, [selectedCategory, selectedConcern, selectedAudience, stockFilter, sortBy, maxPrice]);
 
-  const hasActiveFilters = selectedCategory !== 'All' || selectedConcern !== 'All' || selectedAudience !== 'All' || maxPrice < 6000;
+  const hasActiveFilters = selectedCategory !== 'All' || selectedConcern !== 'All' || selectedAudience !== 'All' || stockFilter !== 'All' || maxPrice < 6000;
 
   const resetFilters = () => {
     setSelectedCategory('All');
     setSelectedConcern('All');
     setSelectedAudience('All');
+    setStockFilter('All');
     setMaxPrice(6000);
     setSortBy('featured');
   };
@@ -207,6 +216,32 @@ export const ShopPage: React.FC<ShopPageProps> = ({
                     }`}
                   >
                     {aud === 'All' ? 'All Expressions' : `${aud}'s Edit`}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Stock Availability Filter */}
+            <div className="space-y-2 pt-2 border-t border-[#E5DFD5] dark:border-[#262626]">
+              <span className="text-[11px] uppercase tracking-wider text-[#121212]/60 dark:text-[#F5F3EF]/60 font-semibold block">
+                Availability
+              </span>
+              <div className="space-y-1">
+                {[
+                  { id: 'All', label: 'All Items (8)' },
+                  { id: 'InStock', label: 'In Stock (6)' },
+                  { id: 'OutOfStock', label: 'Sold Out / Waitlist (2)' }
+                ].map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => setStockFilter(item.id as any)}
+                    className={`block w-full text-left text-xs py-1.5 px-2 rounded-md transition-colors cursor-pointer ${
+                      stockFilter === item.id
+                        ? 'bg-[#121212] text-white dark:bg-[#F5F3EF] dark:text-[#0C0C0C] font-medium'
+                        : 'text-[#121212]/70 dark:text-[#F5F3EF]/70 hover:bg-[#FAF8F5] dark:hover:bg-[#1E1E1E]'
+                    }`}
+                  >
+                    {item.label}
                   </button>
                 ))}
               </div>
