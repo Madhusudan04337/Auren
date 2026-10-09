@@ -34,7 +34,8 @@ export const Header: React.FC<HeaderProps> = ({
     { label: 'Motion Story', id: 'story' },
     { label: 'Rituals', id: 'rituals' },
     { label: 'Journal', id: 'journal' },
-    { label: 'The House', id: 'the-house' }
+    { label: 'The House', id: 'the-house' },
+    { label: 'Contact', id: 'contact' }
   ];
 
   const handleNavClick = (item: typeof navItems[0]) => {

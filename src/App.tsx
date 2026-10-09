@@ -23,6 +23,7 @@ import { TheHousePage } from './pages/TheHousePage';
 import { MotionStoryPage } from './pages/MotionStoryPage';
 import { CartPage } from './pages/CartPage';
 import { CheckoutPage } from './pages/CheckoutPage';
+import { ContactPage } from './pages/ContactPage';
 import { ThemeProvider } from './context/ThemeContext';
 import { Product, Ritual, Article } from './types';
 import { PRODUCTS } from './data/products';
@@ -134,6 +135,10 @@ export default function App() {
                 onExploreShop={() => handleNavigate('shop')}
                 onExploreRituals={() => handleNavigate('rituals')}
               />
+            )}
+
+            {currentPage === 'contact' && (
+              <ContactPage onNavigate={handleNavigate} />
             )}
 
             {currentPage === 'story' && (

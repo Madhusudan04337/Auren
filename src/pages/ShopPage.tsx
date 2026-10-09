@@ -74,17 +74,15 @@ export const ShopPage: React.FC<ShopPageProps> = ({
     <div className="bg-[#FAF8F5] dark:bg-[#0C0C0C] min-h-screen py-10 sm:py-16 text-[#121212] dark:text-[#F5F3EF] transition-colors duration-200">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 space-y-10">
         {/* Collection Header */}
-        <div className="space-y-3 border-b border-[#E5DFD5] dark:border-[#222222] pb-8">
+        <div className="space-y-3 border-b border-[#E5DFD5]/70 dark:border-[#222222] pb-8">
           <div className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[#B89B6C] dark:text-[#D4AF37] font-semibold">
-            <Sparkles className="w-3.5 h-3.5" />
             <span>The Complete Atelier</span>
           </div>
           <h1 className="font-serif text-4xl sm:text-5xl text-[#121212] dark:text-[#F5F3EF] font-normal">
             {selectedCategory === 'All' ? 'All Formulations' : `${selectedCategory} Collection`}
           </h1>
-          <p className="text-xs sm:text-sm text-[#121212]/75 dark:text-[#F5F3EF]/75 max-w-xl font-light leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#121212]/60 dark:text-[#F5F3EF]/60 max-w-xl font-light leading-relaxed">
             Architectural formulas crafted for living skin and personal olfactory resonance.
-            Filtered by skin state, lipid needs, and scent profiles.
           </p>
         </div>
 

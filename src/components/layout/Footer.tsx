@@ -115,6 +115,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <button
+                  onClick={() => onNavigate('contact')}
+                  className="hover:text-[#B89B6C] dark:hover:text-[#D4AF37] transition-colors cursor-pointer text-[#B89B6C] dark:text-[#D4AF37] font-medium"
+                >
+                  Client Concierge &amp; Contact
+                </button>
+              </li>
+              <li>
+                <button
                   onClick={() => onNavigate('cart')}
                   className="hover:text-[#B89B6C] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
                 >

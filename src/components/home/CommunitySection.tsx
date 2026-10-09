@@ -59,29 +59,29 @@ export const CommunitySection: React.FC<CommunitySectionProps> = ({ onSelectProd
   };
 
   return (
-    <section className="bg-[#FAF8F5] dark:bg-[#0C0C0C] py-16 sm:py-24 border-b border-[#E5DFD5] dark:border-[#222222] transition-colors duration-200">
+    <section className="bg-[#FAF8F5] dark:bg-[#0C0C0C] py-20 lg:py-24 border-b border-[#E5DFD5]/70 dark:border-[#222222] transition-colors duration-200">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 space-y-12">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#E5DFD5] dark:border-[#222222] pb-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#E5DFD5]/70 dark:border-[#222222] pb-6">
           <div className="space-y-2">
             <span className="text-xs uppercase tracking-[0.25em] text-[#B89B6C] dark:text-[#D4AF37] font-semibold">
-              The AUREN Community
+              The Community
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#121212] dark:text-[#F5F3EF] font-normal">
-              Real Rituals, Real Skin
+              Real Rituals
             </h2>
           </div>
-          <p className="text-xs sm:text-sm text-[#121212]/70 dark:text-[#F5F3EF]/70 max-w-md font-light leading-relaxed">
-            See how living expressions integrate our formulas across diverse skin conditions, humidities, and personal styles.
+          <p className="text-xs sm:text-sm text-[#121212]/60 dark:text-[#F5F3EF]/60 max-w-sm font-light leading-relaxed">
+            Formulations in practice across diverse climates, skin states, and personal styles.
           </p>
         </div>
 
-        {/* 4 Community Cards with Rounded Curves */}
+        {/* 4 Community Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {communityStories.map((story) => (
             <div
               key={story.id}
               onClick={() => onSelectProduct(story.product)}
-              className="bg-white dark:bg-[#141414] rounded-2xl sm:rounded-3xl border border-[#E5DFD5]/80 dark:border-[#262626] flex flex-col justify-between overflow-hidden group cursor-pointer hover:border-[#B89B6C]/60 dark:hover:border-[#D4AF37]/50 hover:shadow-xl hover:shadow-[#B89B6C]/8 transition-all duration-300 shadow-2xs"
+              className="bg-white dark:bg-[#141414] rounded-2xl border border-black/5 dark:border-white/10 flex flex-col justify-between overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300"
             >
               {/* Photo */}
               <div className="aspect-4/3 relative overflow-hidden bg-[#E8DFD3] dark:bg-[#1C1C1C] rounded-t-2xl sm:rounded-t-3xl">
