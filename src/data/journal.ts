@@ -1,5 +1,6 @@
 import { Article } from '../types';
-import { HERO_IMAGE, NOIR_FRAGRANCE_IMAGE, CLOUD_BARRIER_IMAGE, SKIN_TINT_IMAGE, MORNING_RITUAL_IMAGE } from './products';
+import journalEditorialImg from '../assets/images/journal_dermal_editorial_1791562722336.jpg';
+import { HERO_IMAGE, NOIR_FRAGRANCE_IMAGE, CLOUD_BARRIER_IMAGE, SKIN_TINT_IMAGE, MORNING_RITUAL_IMAGE, AMBER_MIST_IMAGE } from './products';
 
 export const ARTICLES: Article[] = [
   {
@@ -17,7 +18,7 @@ export const ARTICLES: Article[] = [
       'Our research at AUREN focuses on recreating the golden physiological 3:1:1 lipid ratio: 3 parts ceramides, 1 part cholesterol, and 1 part essential free fatty acids. Without this precise molecular architecture, topical hydration simply evaporates within hours.',
       'To restore balance: cease stripping foams, favor lipid-replenishing oil-to-milk formulas, and seal vulnerable zones with a biomimetic barrier cream before introducing active acids.'
     ],
-    featuredImage: CLOUD_BARRIER_IMAGE,
+    featuredImage: journalEditorialImg,
     relatedProductIds: ['auren-01', 'auren-04']
   },
   {
@@ -35,7 +36,7 @@ export const ARTICLES: Article[] = [
       'The heart or heart chord reveals the true emotional character—rare Florentine orris root, Moroccan neroli, and damask rose that settle over the next two to four hours.',
       'The foundation rests upon dense macromolecules: cedarwood resins, amber accords, and plant musk that cling to keratin fibers for up to 14 hours. When applying perfume, never crush the wrists together; friction generates heat that tears fragile volatile head notes before they can blossom.'
     ],
-    featuredImage: NOIR_FRAGRANCE_IMAGE,
+    featuredImage: MORNING_RITUAL_IMAGE,
     relatedProductIds: ['auren-02', 'auren-06']
   },
   {

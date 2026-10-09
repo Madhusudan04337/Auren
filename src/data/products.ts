@@ -5,12 +5,20 @@ import cloudBarrierImg from '../assets/images/cream_jar_noir_1791552069177.jpg';
 import noirFragranceImg from '../assets/images/noir_parfum_flacon_1791552058241.jpg';
 import skinTintImg from '../assets/images/elixir_dropper_dark_1791552079334.jpg';
 import morningRitualImg from '../assets/images/ritual_cinematic_dark_1791552089705.jpg';
+import groomingSerumImg from '../assets/images/grooming_serum_noir_1791562658947.jpg';
+import amberMistImg from '../assets/images/amber_mist_spray_1791562683551.jpg';
+import overnightMaskImg from '../assets/images/overnight_gel_jar_1791562671227.jpg';
+import bodyOilImg from '../assets/images/body_oil_flacon_1791562694496.jpg';
 
 export const HERO_IMAGE = heroImg;
 export const CLOUD_BARRIER_IMAGE = cloudBarrierImg;
 export const NOIR_FRAGRANCE_IMAGE = noirFragranceImg;
 export const SKIN_TINT_IMAGE = skinTintImg;
 export const MORNING_RITUAL_IMAGE = morningRitualImg;
+export const GROOMING_SERUM_IMAGE = groomingSerumImg;
+export const AMBER_MIST_IMAGE = amberMistImg;
+export const OVERNIGHT_MASK_IMAGE = overnightMaskImg;
+export const BODY_OIL_IMAGE = bodyOilImg;
 
 export const PRODUCTS: Product[] = [
   {
@@ -210,8 +218,8 @@ export const PRODUCTS: Product[] = [
       { size: '100 ml Pump', price: 1650 }
     ],
     images: [
-      HERO_IMAGE,
-      NOIR_FRAGRANCE_IMAGE
+      GROOMING_SERUM_IMAGE,
+      HERO_IMAGE
     ],
     texture: 'Cooling, featherweight transparent gel serum that leaves skin matte and calmed.',
     usageSteps: [
@@ -255,8 +263,8 @@ export const PRODUCTS: Product[] = [
       family: 'Citrus Aquatic'
     },
     images: [
-      NOIR_FRAGRANCE_IMAGE,
-      HERO_IMAGE
+      AMBER_MIST_IMAGE,
+      NOIR_FRAGRANCE_IMAGE
     ],
     texture: 'Fine artisanal perfume mist.',
     usageSteps: [
@@ -291,8 +299,8 @@ export const PRODUCTS: Product[] = [
       { size: '60 ml Frosted Pot', price: 2450 }
     ],
     images: [
-      CLOUD_BARRIER_IMAGE,
-      MORNING_RITUAL_IMAGE
+      OVERNIGHT_MASK_IMAGE,
+      CLOUD_BARRIER_IMAGE
     ],
     texture: 'Cooling translucent jelly balm that envelops face in an invisible breathable pillow cocoon.',
     usageSteps: [
@@ -328,7 +336,7 @@ export const PRODUCTS: Product[] = [
       { size: '100 ml Heavy Flacon', price: 1950 }
     ],
     images: [
-      SKIN_TINT_IMAGE,
+      BODY_OIL_IMAGE,
       MORNING_RITUAL_IMAGE
     ],
     texture: 'Featherlight dry satin oil with zero greasy residue on clothing.',
