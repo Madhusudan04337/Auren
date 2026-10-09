@@ -1,10 +1,10 @@
 import { Product } from '../types';
 
-import heroImg from '../assets/images/hero_editorial_beauty_1791455299205.jpg';
-import cloudBarrierImg from '../assets/images/product_cloud_barrier_1791455311264.jpg';
-import noirFragranceImg from '../assets/images/product_noir_fragrance_1791455322897.jpg';
-import skinTintImg from '../assets/images/product_skin_tint_1791455332361.jpg';
-import morningRitualImg from '../assets/images/ritual_morning_reset_1791455342898.jpg';
+import heroImg from '../assets/images/hero_dark_luxury_1791552039953.jpg';
+import cloudBarrierImg from '../assets/images/cream_jar_noir_1791552069177.jpg';
+import noirFragranceImg from '../assets/images/noir_parfum_flacon_1791552058241.jpg';
+import skinTintImg from '../assets/images/elixir_dropper_dark_1791552079334.jpg';
+import morningRitualImg from '../assets/images/ritual_cinematic_dark_1791552089705.jpg';
 
 export const HERO_IMAGE = heroImg;
 export const CLOUD_BARRIER_IMAGE = cloudBarrierImg;
@@ -328,8 +328,8 @@ export const PRODUCTS: Product[] = [
       { size: '100 ml Heavy Flacon', price: 1950 }
     ],
     images: [
-      HERO_IMAGE,
-      NOIR_FRAGRANCE_IMAGE
+      SKIN_TINT_IMAGE,
+      MORNING_RITUAL_IMAGE
     ],
     texture: 'Featherlight dry satin oil with zero greasy residue on clothing.',
     usageSteps: [

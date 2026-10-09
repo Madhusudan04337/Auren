@@ -18,15 +18,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   };
 
   return (
-    <footer className="site-footer organic-footer pt-20 pb-12 border-t transition-colors duration-300">
+    <footer className="site-footer pt-20 pb-12 border-t transition-colors duration-300">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
-        <div className="footer-grid grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b reveal-on-load">
+        <div className="footer-grid grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b">
           {/* Brand Column */}
           <div className="md:col-span-4 space-y-6">
-            <span className="font-serif text-3xl tracking-[0.25em] font-normal uppercase text-[var(--text-primary)] block">
+            <span className="font-serif text-3xl tracking-[0.25em] font-normal uppercase text-[var(--footer-text)] block">
               AUREN
             </span>
-            <p className="text-sm font-light text-[var(--text-primary)]/75 leading-relaxed max-w-sm">
+            <p className="text-sm font-light text-[var(--footer-text)]/75 leading-relaxed max-w-sm">
               Beauty rituals for every expression. High-performance biomimetic formulas,
               rare botanical absolutes, and gender-inclusive formulations crafted with quiet architectural precision.
             </p>
