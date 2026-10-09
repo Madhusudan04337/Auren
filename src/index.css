@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-serif: "Instrument Serif", Georgia, serif;
-  --font-sans: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
 }
 
 :root {
   --font-display: "Instrument Serif", Georgia, serif;
-  --font-body: "Manrope", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
   color-scheme: light dark;
 }
 
@@ -32,20 +32,20 @@
 }
 
 .dark {
-  --bg-primary: #121d18;
-  --bg-surface: #1a2b23;
-  --bg-elevated: #263d31;
-  --bg-subtle: #304b3d;
-  --text-primary: #f3eee4;
-  --text-secondary: #bdcbbb;
-  --text-muted: #91a394;
-  --border-primary: #3d5a49;
-  --border-subtle: #2a4033;
-  --accent-gold: #d39a72;
-  --accent-hover: #e3b18b;
-  --accent-sage: #a7b99a;
-  --footer-bg: #0f1b16;
-  --footer-surface: #1d3026;
+  --bg-primary: #211f2d;
+  --bg-surface: #2b293b;
+  --bg-elevated: #39364d;
+  --bg-subtle: #45415b;
+  --text-primary: #f8f3ed;
+  --text-secondary: #d3cbd0;
+  --text-muted: #a9a0ad;
+  --border-primary: #5c566e;
+  --border-subtle: #403c51;
+  --accent-gold: #e7aa88;
+  --accent-hover: #f1c1a2;
+  --accent-sage: #b7c9b5;
+  --footer-bg: #302b3d;
+  --footer-surface: #3b354b;
 }
 
 body {
