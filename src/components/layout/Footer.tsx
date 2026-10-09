@@ -18,33 +18,33 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   };
 
   return (
-    <footer className="bg-[#121212] dark:bg-[#070707] text-[#FAF8F5] pt-16 pb-12 border-t border-black/10 dark:border-white/10 transition-colors duration-200">
+    <footer className="site-footer organic-footer pt-20 pb-12 border-t transition-colors duration-300">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/15">
+        <div className="footer-grid grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b reveal-on-load">
           {/* Brand Column */}
-          <div className="md:col-span-4 space-y-5">
-            <span className="font-serif text-3xl tracking-[0.25em] font-normal uppercase text-[#FAF8F5] block">
+          <div className="md:col-span-4 space-y-6">
+            <span className="font-serif text-3xl tracking-[0.25em] font-normal uppercase text-[var(--text-primary)] block">
               AUREN
             </span>
-            <p className="text-sm font-light text-[#FAF8F5]/75 leading-relaxed max-w-sm">
+            <p className="text-sm font-light text-[var(--text-primary)]/75 leading-relaxed max-w-sm">
               Beauty rituals for every expression. High-performance biomimetic formulas,
               rare botanical absolutes, and gender-inclusive formulations crafted with quiet architectural precision.
             </p>
-            <div className="pt-2 text-xs text-[#B89B6C] dark:text-[#D4AF37] tracking-wider uppercase font-medium">
+            <div className="pt-2 text-xs text-[var(--accent-gold)] tracking-wider uppercase font-medium">
               Haute Parfumerie · Biomimetic Skincare · Conscious Luxury
             </div>
           </div>
 
           {/* Navigation Columns */}
           <div className="md:col-span-2 space-y-4">
-            <h4 className="text-xs uppercase tracking-[0.2em] font-semibold text-[#B89B6C] dark:text-[#D4AF37]">
+            <h4 className="text-xs uppercase tracking-[0.2em] font-semibold text-[var(--accent-gold)]">
               Collections
             </h4>
-            <ul className="space-y-2.5 text-xs text-[#FAF8F5]/80">
+            <ul className="space-y-2.5 text-[13px] leading-6 text-[var(--text-primary)]/72">
               <li>
                 <button
                   onClick={() => onNavigate('shop', { category: 'Skin' })}
-                  className="hover:text-[#B89B6C] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Lipid Skincare
                 </button>
@@ -52,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('shop', { category: 'Fragrance' })}
-                  className="hover:text-[#B89B6C] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Haute Parfumerie
                 </button>
@@ -60,7 +60,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('shop', { category: 'Grooming' })}
-                  className="hover:text-[#B89B6C] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Clean Lines Grooming
                 </button>
@@ -68,7 +68,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('shop', { category: 'Makeup' })}
-                  className="hover:text-[#B89B6C] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Complexion Fluid
                 </button>
@@ -76,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('rituals')}
-                  className="hover:text-[#B89B6C] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Curated Ritual Sets
                 </button>
@@ -85,14 +85,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           <div className="md:col-span-2 space-y-4">
-            <h4 className="text-xs uppercase tracking-[0.2em] font-semibold text-[#B89B6C] dark:text-[#D4AF37]">
+            <h4 className="text-xs uppercase tracking-[0.2em] font-semibold text-[var(--accent-gold)]">
               The House
             </h4>
-            <ul className="space-y-2.5 text-xs text-[#FAF8F5]/80">
+            <ul className="space-y-2.5 text-[13px] leading-6 text-[var(--text-primary)]/72">
               <li>
                 <button
                   onClick={() => onNavigate('journal')}
-                  className="hover:text-[#B89B6C] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   The Journal
                 </button>
@@ -100,7 +100,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('story')}
-                  className="hover:text-[#B89B6C] dark:hover:text-[#D4AF37] transition-colors cursor-pointer text-[#B89B6C] dark:text-[#D4AF37]"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Motion Story &amp; Science
                 </button>
@@ -108,7 +108,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('the-house')}
-                  className="hover:text-[#B89B6C] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   The Maison &amp; Philosophy
                 </button>
@@ -116,7 +116,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('contact')}
-                  className="hover:text-[#B89B6C] dark:hover:text-[#D4AF37] transition-colors cursor-pointer text-[#B89B6C] dark:text-[#D4AF37] font-medium"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Client Concierge &amp; Contact
                 </button>
@@ -124,7 +124,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('cart')}
-                  className="hover:text-[#B89B6C] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Shopping Bag
                 </button>
@@ -132,7 +132,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('checkout')}
-                  className="hover:text-[#B89B6C] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Atelier Checkout
                 </button>
@@ -140,57 +140,57 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('wishlist')}
-                  className="hover:text-[#B89B6C] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Saved Wishlist
                 </button>
               </li>
               <li>
-                <span className="text-[#FAF8F5]/40">Recyclable Glass Initiative</span>
+                <span className="text-[var(--text-primary)]/40">Recyclable Glass Initiative</span>
               </li>
             </ul>
           </div>
 
           {/* Newsletter Column */}
-          <div className="md:col-span-4 space-y-4">
-            <h4 className="text-xs uppercase tracking-[0.2em] font-semibold text-[#B89B6C] dark:text-[#D4AF37]">
+          <div className="footer-newsletter md:col-span-4 space-y-5">
+            <h4 className="text-xs uppercase tracking-[0.2em] font-semibold text-[var(--accent-gold)]">
               Private Gazette
             </h4>
-            <p className="text-xs text-[#FAF8F5]/75 leading-relaxed">
+            <p className="text-xs text-[var(--text-primary)]/75 leading-relaxed">
               Receive private invitations to micro-batch fragrance harvests, skincare formulations, and ritual guides.
             </p>
             {subscribed ? (
-              <div className="flex items-center space-x-2 text-xs text-[#B89B6C] dark:text-[#D4AF37] bg-[#B89B6C]/15 dark:bg-[#D4AF37]/15 p-3 border border-[#B89B6C]/30 dark:border-[#D4AF37]/30">
+              <div className="flex items-center space-x-2 text-xs text-[var(--accent-gold)] bg-[#d49a70]/15 dark:bg-[#D4AF37]/15 p-3 border border-[#d49a70]/30 dark:border-[#D4AF37]/30">
                 <Check className="w-4 h-4" />
                 <span>You are invited. Welcome to the AUREN circle.</span>
               </div>
             ) : (
-              <form onSubmit={handleSubscribe} className="flex">
+              <form onSubmit={handleSubscribe} className="footer-form flex">
                 <input
                   type="email"
                   required
                   placeholder="Enter your email address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 bg-[#1C1C1C] dark:bg-[#141414] border border-white/20 px-3.5 py-2.5 text-xs text-[#FAF8F5] placeholder-[#FAF8F5]/45 focus:outline-none focus:border-[#B89B6C] dark:focus:border-[#D4AF37] transition-colors"
+                  className="flex-1 bg-[var(--bg-surface)] bg-[var(--bg-surface)] border border-white/20 px-3.5 py-2.5 text-xs text-[var(--text-primary)] placeholder-[#f4f0e7]/45 focus:outline-none focus:border-[#d49a70] dark:focus:border-[#D4AF37] transition-colors"
                 />
                 <button
                   type="submit"
                   aria-label="Subscribe to Gazette"
-                  className="bg-[#B89B6C] dark:bg-[#D4AF37] hover:bg-[#A08356] dark:hover:bg-[#E2C265] text-[#121212] font-semibold px-4 py-2.5 text-xs transition-colors flex items-center justify-center cursor-pointer"
+                  className="bg-[#d49a70] dark:bg-[#D4AF37] hover:bg-[#A08356] dark:hover:bg-[#E2C265] text-[#121212] font-semibold px-4 py-2.5 text-xs transition-colors flex items-center justify-center cursor-pointer"
                 >
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </form>
             )}
-            <div className="text-[11px] text-[#FAF8F5]/50 pt-1">
+            <div className="text-[11px] text-[var(--text-primary)]/50 pt-1">
               Complimentary sample consultations available via our digital atelier.
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#FAF8F5]/60 gap-4">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--text-primary)]/60 gap-4">
           <div className="flex items-center space-x-4">
             <span>Dermatologically Tested</span>
             <span>·</span>

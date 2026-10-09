@@ -15,11 +15,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onSelectProduct
 }) => {
   return (
-    <section className="relative overflow-hidden bg-[#FAF8F5] dark:bg-[#0C0C0C] border-b border-[#E5DFD5]/70 dark:border-[#222222] transition-colors duration-200">
+    <section className="organic-hero relative overflow-hidden bg-[#FAF8F5] dark:bg-[#0C0C0C] border-b border-[#E5DFD5]/70 dark:border-[#222222] transition-colors duration-200">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-16 md:py-24 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Editorial Column */}
-          <div className="lg:col-span-6 space-y-8">
+          <div className="lg:col-span-6 space-y-8 lg:pr-8">
             <div className="space-y-4">
               <div className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[#B89B6C] dark:text-[#D4AF37] font-semibold">
                 <span>Atelier Collection</span>
