@@ -20,7 +20,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="site-footer organic-footer pt-20 pb-12 border-t transition-colors duration-300">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/15 reveal-on-load">
+        <div className="footer-grid grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b reveal-on-load">
           {/* Brand Column */}
           <div className="md:col-span-4 space-y-6">
             <span className="font-serif text-3xl tracking-[0.25em] font-normal uppercase text-[var(--text-primary)] block">
@@ -100,7 +100,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('story')}
-                  className="hover:text-[#d49a70] dark:hover:text-[#D4AF37] transition-colors cursor-pointer text-[var(--accent-gold)]"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Motion Story &amp; Science
                 </button>
@@ -116,7 +116,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate('contact')}
-                  className="hover:text-[#d49a70] dark:hover:text-[#D4AF37] transition-colors cursor-pointer text-[var(--accent-gold)] font-medium"
+                  className="site-footer__link transition-colors cursor-pointer"
                 >
                   Client Concierge &amp; Contact
                 </button>
@@ -152,7 +152,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           {/* Newsletter Column */}
-          <div className="md:col-span-4 space-y-4">
+          <div className="footer-newsletter md:col-span-4 space-y-5">
             <h4 className="text-xs uppercase tracking-[0.2em] font-semibold text-[var(--accent-gold)]">
               Private Gazette
             </h4>
@@ -165,7 +165,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <span>You are invited. Welcome to the AUREN circle.</span>
               </div>
             ) : (
-              <form onSubmit={handleSubscribe} className="flex">
+              <form onSubmit={handleSubscribe} className="footer-form flex">
                 <input
                   type="email"
                   required

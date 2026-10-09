@@ -27,8 +27,9 @@
   --accent-gold: #b86f4c;
   --accent-hover: #98583d;
   --accent-sage: #7e9882;
-  --footer-bg: #20352d;
-  --footer-surface: #29453a;
+  --footer-bg: #294239;
+  --footer-surface: #38564a;
+  --footer-text: #f5f0e7;
 }
 
 .dark {
@@ -44,8 +45,9 @@
   --accent-gold: #e7aa88;
   --accent-hover: #f1c1a2;
   --accent-sage: #b7c9b5;
-  --footer-bg: #302b3d;
-  --footer-surface: #3b354b;
+  --footer-bg: #252d2a;
+  --footer-surface: #33423c;
+  --footer-text: #f6f1e9;
 }
 
 body {
@@ -159,16 +161,60 @@ button, a { transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
 
 .site-footer {
   background: var(--footer-bg);
-  color: var(--text-primary);
+  color: var(--footer-text);
   border-color: color-mix(in srgb, var(--accent-sage) 30%, transparent);
 }
 
-.site-footer__surface {
-  background: color-mix(in srgb, var(--footer-surface) 72%, transparent);
+.site-footer .text-\[var\(--text-primary\)\]\/75,
+.site-footer .text-\[var\(--text-primary\)\]\/72 {
+  color: color-mix(in srgb, var(--footer-text) 72%, transparent);
+}
+
+.site-footer .text-\[var\(--text-primary\)\]\/60,
+.site-footer .text-\[var\(--text-primary\)\]\/50 {
+  color: color-mix(in srgb, var(--footer-text) 54%, transparent);
+}
+
+.footer-grid {
+  border-color: color-mix(in srgb, var(--footer-text) 14%, transparent);
+}
+
+.footer-newsletter {
+  padding: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--accent-sage) 25%, transparent);
+  border-radius: 2rem 2rem 2rem 0.75rem;
+  background: color-mix(in srgb, var(--footer-surface) 82%, transparent);
+  box-shadow: 0 18px 50px color-mix(in srgb, #000 12%, transparent);
+}
+
+.footer-form {
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--footer-text) 22%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--footer-bg) 55%, transparent);
+}
+
+.footer-form input {
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--footer-text);
+}
+
+.footer-form button {
+  margin: 0.2rem;
+  border-radius: 999px;
+  background: var(--accent-gold);
+  color: var(--footer-bg);
+}
+
+.footer-form button:hover,
+.footer-form button:focus-visible {
+  background: var(--accent-hover);
 }
 
 .site-footer__link {
-  color: color-mix(in srgb, var(--text-primary) 72%, transparent);
+  color: color-mix(in srgb, var(--footer-text) 72%, transparent);
   transition: color 220ms ease, transform 220ms ease;
 }
 
