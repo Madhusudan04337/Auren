@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
+import { AuthProvider } from './context/AuthContext';
 import { AnnouncementBar } from './components/layout/AnnouncementBar';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
@@ -24,6 +25,9 @@ import { MotionStoryPage } from './pages/MotionStoryPage';
 import { CartPage } from './pages/CartPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { ContactPage } from './pages/ContactPage';
+import { LoginPage } from './pages/LoginPage';
+import { SignUpPage } from './pages/SignUpPage';
+import { AccountPage } from './pages/AccountPage';
 import { ThemeProvider } from './context/ThemeContext';
 import { Product, Ritual, Article } from './types';
 import { PRODUCTS } from './data/products';
@@ -68,128 +72,157 @@ export default function App() {
     setQuickViewProduct(product);
   };
 
+  const isAuthPage = currentPage === 'login' || currentPage === 'signup';
+
   return (
     <ThemeProvider>
-      <CartProvider>
-        <WishlistProvider>
-          <div className="min-h-screen flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)] selection:bg-[var(--text-primary)] selection:text-[var(--bg-primary)] transition-colors duration-300">
-            {/* 1. Global Announcement */}
-            <AnnouncementBar />
+      <AuthProvider>
+        <CartProvider>
+          <WishlistProvider>
+            <div className="min-h-screen flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)] selection:bg-[var(--text-primary)] selection:text-[var(--bg-primary)] transition-colors duration-300">
+              {/* 1. Global Announcement (hidden on login & register) */}
+              {!isAuthPage && <AnnouncementBar />}
 
-          {/* 2. Top Navigation Bar */}
-          <Header
-            currentPage={currentPage}
-            onNavigate={handleNavigate}
-            onOpenSearch={() => setIsSearchOpen(true)}
-          />
+              {/* 2. Top Navigation Bar (hidden on login & register) */}
+              {!isAuthPage && (
+                <Header
+                  currentPage={currentPage}
+                  onNavigate={handleNavigate}
+                  onOpenSearch={() => setIsSearchOpen(true)}
+                />
+              )}
 
-          {/* 3. Main View Stage */}
-          <main className="flex-1">
-            {currentPage === 'home' && (
-              <HomePage
-                onNavigate={handleNavigate}
+              {/* 3. Main View Stage */}
+              <main className="flex-1">
+                {currentPage === 'home' && (
+                  <HomePage
+                    onNavigate={handleNavigate}
+                    onSelectProduct={handleSelectProduct}
+                    onSelectRitual={handleSelectRitual}
+                    onSelectArticle={handleSelectArticle}
+                    onQuickView={handleQuickView}
+                  />
+                )}
+
+                {currentPage === 'shop' && (
+                  <ShopPage
+                    initialCategory={shopCategory}
+                    onSelectProduct={handleSelectProduct}
+                    onQuickView={handleQuickView}
+                  />
+                )}
+
+                {currentPage === 'product' && selectedProduct && (
+                  <ProductDetailPage
+                    product={selectedProduct}
+                    onBack={() => setCurrentPage('shop')}
+                    onSelectProduct={handleSelectProduct}
+                  />
+                )}
+
+                {currentPage === 'rituals' && (
+                  <RitualsPage onSelectProduct={handleSelectProduct} />
+                )}
+
+                {currentPage === 'journal' && (
+                  <JournalPage
+                    initialArticle={selectedArticle}
+                    onSelectProduct={handleSelectProduct}
+                  />
+                )}
+
+                {currentPage === 'wishlist' && (
+                  <WishlistPage
+                    onSelectProduct={handleSelectProduct}
+                    onQuickView={handleQuickView}
+                    onExploreShop={() => handleNavigate('shop')}
+                  />
+                )}
+
+                {currentPage === 'the-house' && (
+                  <TheHousePage
+                    onExploreShop={() => handleNavigate('shop')}
+                    onExploreRituals={() => handleNavigate('rituals')}
+                  />
+                )}
+
+                {currentPage === 'contact' && (
+                  <ContactPage onNavigate={handleNavigate} />
+                )}
+
+                {currentPage === 'login' && (
+                  <LoginPage
+                    onNavigate={handleNavigate}
+                    onSuccessReturn={() => handleNavigate('account')}
+                  />
+                )}
+
+                {currentPage === 'signup' && (
+                  <SignUpPage
+                    onNavigate={handleNavigate}
+                    onSuccessReturn={() => handleNavigate('account')}
+                  />
+                )}
+
+                {currentPage === 'account' && (
+                  <AccountPage
+                    onNavigate={handleNavigate}
+                    onSelectProduct={handleSelectProduct}
+                  />
+                )}
+
+                {currentPage === 'story' && (
+                  <MotionStoryPage
+                    onNavigate={handleNavigate}
+                    onSelectProduct={handleSelectProduct}
+                  />
+                )}
+
+                {currentPage === 'cart' && (
+                  <CartPage
+                    onNavigate={handleNavigate}
+                    onSelectProduct={handleSelectProduct}
+                  />
+                )}
+
+                {currentPage === 'checkout' && (
+                  <CheckoutPage
+                    onNavigate={handleNavigate}
+                    onSelectProduct={handleSelectProduct}
+                    onSuccessReturn={() => handleNavigate('home')}
+                  />
+                )}
+              </main>
+
+              {/* 4. Global Footer (hidden on login & register) */}
+              {!isAuthPage && <Footer onNavigate={handleNavigate} />}
+
+              {/* 5. Slide-Over Bag Drawer */}
+              <CartDrawer onNavigate={handleNavigate} />
+
+              {/* 6. Checkout Flow Modal */}
+              <CheckoutModal onSuccessReturn={() => setCurrentPage('home')} />
+
+              {/* 7. Instant Search Overlay */}
+              <SearchOverlay
+                isOpen={isSearchOpen}
+                onClose={() => setIsSearchOpen(false)}
                 onSelectProduct={handleSelectProduct}
-                onSelectRitual={handleSelectRitual}
                 onSelectArticle={handleSelectArticle}
-                onQuickView={handleQuickView}
               />
-            )}
 
-            {currentPage === 'shop' && (
-              <ShopPage
-                initialCategory={shopCategory}
-                onSelectProduct={handleSelectProduct}
-                onQuickView={handleQuickView}
+              {/* 8. Quick View Modal */}
+              <ProductQuickView
+                product={quickViewProduct}
+                onClose={() => setQuickViewProduct(null)}
+                onViewDetails={handleSelectProduct}
               />
-            )}
-
-            {currentPage === 'product' && selectedProduct && (
-              <ProductDetailPage
-                product={selectedProduct}
-                onBack={() => setCurrentPage('shop')}
-                onSelectProduct={handleSelectProduct}
-              />
-            )}
-
-            {currentPage === 'rituals' && (
-              <RitualsPage onSelectProduct={handleSelectProduct} />
-            )}
-
-            {currentPage === 'journal' && (
-              <JournalPage
-                initialArticle={selectedArticle}
-                onSelectProduct={handleSelectProduct}
-              />
-            )}
-
-            {currentPage === 'wishlist' && (
-              <WishlistPage
-                onSelectProduct={handleSelectProduct}
-                onQuickView={handleQuickView}
-                onExploreShop={() => handleNavigate('shop')}
-              />
-            )}
-
-            {currentPage === 'the-house' && (
-              <TheHousePage
-                onExploreShop={() => handleNavigate('shop')}
-                onExploreRituals={() => handleNavigate('rituals')}
-              />
-            )}
-
-            {currentPage === 'contact' && (
-              <ContactPage onNavigate={handleNavigate} />
-            )}
-
-            {currentPage === 'story' && (
-              <MotionStoryPage
-                onNavigate={handleNavigate}
-                onSelectProduct={handleSelectProduct}
-              />
-            )}
-
-            {currentPage === 'cart' && (
-              <CartPage
-                onNavigate={handleNavigate}
-                onSelectProduct={handleSelectProduct}
-              />
-            )}
-
-            {currentPage === 'checkout' && (
-              <CheckoutPage
-                onNavigate={handleNavigate}
-                onSelectProduct={handleSelectProduct}
-                onSuccessReturn={() => handleNavigate('home')}
-              />
-            )}
-          </main>
-
-          {/* 4. Global Footer */}
-          <Footer onNavigate={handleNavigate} />
-
-          {/* 5. Slide-Over Bag Drawer */}
-          <CartDrawer onNavigate={handleNavigate} />
-
-          {/* 6. Checkout Flow Modal */}
-          <CheckoutModal onSuccessReturn={() => setCurrentPage('home')} />
-
-          {/* 7. Instant Search Overlay */}
-          <SearchOverlay
-            isOpen={isSearchOpen}
-            onClose={() => setIsSearchOpen(false)}
-            onSelectProduct={handleSelectProduct}
-            onSelectArticle={handleSelectArticle}
-          />
-
-          {/* 8. Quick View Modal */}
-          <ProductQuickView
-            product={quickViewProduct}
-            onClose={() => setQuickViewProduct(null)}
-            onViewDetails={handleSelectProduct}
-          />
-        </div>
-      </WishlistProvider>
-    </CartProvider>
+            </div>
+          </WishlistProvider>
+        </CartProvider>
+      </AuthProvider>
     </ThemeProvider>
   );
+
+
 }

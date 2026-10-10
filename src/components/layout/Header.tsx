@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Heart, ShoppingBag, Menu, X, Sun, Moon } from 'lucide-react';
+import { Search, Heart, ShoppingBag, Menu, X, Sun, Moon, User } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { useTheme } from '../../context/ThemeContext';
+import { useAuth } from '../../context/AuthContext';
 
 interface HeaderProps {
   currentPage: string;
@@ -18,6 +19,7 @@ export const Header: React.FC<HeaderProps> = ({
   const { totalItemCount, openCart } = useCart();
   const { wishlistCount } = useWishlist();
   const { theme, toggleTheme } = useTheme();
+  const { user, isAuthenticated } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -94,7 +96,7 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
 
           {/* Zone 3: Primary Actions */}
-          <div className="flex items-center space-x-4 sm:space-x-5 text-[#121212] dark:text-[#F5F3EF]">
+          <div className="flex items-center space-x-3.5 sm:space-x-4 text-[#121212] dark:text-[#F5F3EF]">
             {/* Search */}
             <button
               onClick={onOpenSearch}
@@ -116,6 +118,19 @@ export const Header: React.FC<HeaderProps> = ({
                 <Sun className="w-4 h-4 text-[#D4AF37] hover:rotate-45 transition-transform" />
               ) : (
                 <Moon className="w-4 h-4 text-[#121212] hover:-rotate-12 transition-transform" />
+              )}
+            </button>
+
+            {/* Account / Maison Member Portal */}
+            <button
+              onClick={() => onNavigate(isAuthenticated ? 'account' : 'login')}
+              className="p-1 hover:text-[#B89B6C] dark:hover:text-[#D4AF37] transition-colors focus:outline-none relative cursor-pointer flex items-center justify-center"
+              aria-label={isAuthenticated ? `Atelier Account (${user?.name})` : 'Maison Member Sign In'}
+              title={isAuthenticated ? `Atelier Account · ${user?.name}` : 'Maison Member Sign In'}
+            >
+              <User className="w-4 h-4" />
+              {isAuthenticated && (
+                <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#B89B6C] dark:bg-[#D4AF37] ring-1 ring-white dark:ring-[#0C0C0C]" />
               )}
             </button>
 
@@ -151,6 +166,7 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
 
+
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
           <div className="lg:hidden mt-4 pt-4 border-t border-[#E5DFD5] dark:border-[#222222] pb-4 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200 bg-[#FAF8F5] dark:bg-[#0C0C0C]">
@@ -163,6 +179,19 @@ export const Header: React.FC<HeaderProps> = ({
                 {item.label}
               </button>
             ))}
+            
+            {/* Account Link in Mobile Drawer */}
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onNavigate(isAuthenticated ? 'account' : 'login');
+              }}
+              className="block w-full text-left py-2 px-2 text-sm tracking-[0.15em] uppercase text-[#B89B6C] dark:text-[#D4AF37] hover:bg-black/5 dark:hover:bg-white/10 rounded-xs font-medium flex items-center justify-between"
+            >
+              <span>{isAuthenticated ? `Atelier Account (${user?.name?.split(' ')[0]})` : 'Sign In / Register'}</span>
+              <User className="w-4 h-4" />
+            </button>
+
             <div className="pt-2 border-t border-[#E5DFD5] dark:border-[#222222] flex items-center justify-between px-2 text-xs text-[#121212]/70 dark:text-[#F5F3EF]/70">
               <button
                 onClick={() => {
@@ -192,6 +221,7 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
         )}
+
       </div>
     </header>
   );

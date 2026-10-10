@@ -139,6 +139,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <button
+                  onClick={() => onNavigate('account')}
+                  className="site-footer__link transition-colors cursor-pointer"
+                >
+                  Maison Account &amp; Orders
+                </button>
+              </li>
+              <li>
+                <button
                   onClick={() => onNavigate('wishlist')}
                   className="site-footer__link transition-colors cursor-pointer"
                 >

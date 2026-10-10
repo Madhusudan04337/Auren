@@ -123,3 +123,65 @@ export interface FilterState {
   sortBy: 'featured' | 'price-asc' | 'price-desc' | 'rating' | 'bestsellers';
   searchQuery: string;
 }
+
+export interface UserAddress {
+  id: string;
+  isDefault: boolean;
+  fullName: string;
+  street: string;
+  apartment?: string;
+  city: string;
+  postalCode: string;
+  country: string;
+  phone?: string;
+}
+
+export interface UserOrder {
+  id: string;
+  orderNumber: string;
+  date: string;
+  status: 'Processing' | 'Dispatched' | 'Delivered' | 'In Transit';
+  trackingNumber: string;
+  carrier: string;
+  items: {
+    productId: string;
+    productName: string;
+    subtitle?: string;
+    image: string;
+    size: string;
+    shade?: string;
+    quantity: number;
+    price: number;
+  }[];
+  subtotal: number;
+  shipping: number;
+  total: number;
+  shippingAddress: UserAddress;
+  paymentMethod: string;
+}
+
+export interface UserProfile {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  joinedDate: string;
+  tier: 'Atelier Collector' | 'Cellular Member' | 'Noir Connoisseur';
+  tierPoints: number;
+  avatarInitials: string;
+  skinProfile: {
+    skinType: string;
+    primaryConcerns: string[];
+    fragranceFamily: string;
+    amProtocolPreference: string;
+    pmProtocolPreference: string;
+  };
+  addresses: UserAddress[];
+  preferences: {
+    newsletter: boolean;
+    smsNotifications: boolean;
+    privateHarvestAlerts: boolean;
+    complimentarySamples: boolean;
+  };
+}
+
